@@ -23,7 +23,7 @@ So I've decided to dig into it a bit more.
 
 We can't optimize anything unless we measure it.
 
-In Linux each input device is a file in `/dev/input/`, for example by mouse
+In Linux each input device is a file in `/dev/input/`, for example my mouse
 is at `/dev/input/by-id/usb-Logitech_USB-PS_2_Optical_Mouse-event-mouse`.
 
 We can just read the data from it like so:
@@ -67,7 +67,7 @@ loop {
 }
 ```
 
-Here we just read some data in a loop and measure how each iteration took.
+Here we just read some data in a loop and measure how long each iteration took.
 From the duration it's trivial to calculate the rate, so it's easier to read.
 
 Let's run it on the device file of our mouse and move the mouse a bit.
@@ -90,8 +90,8 @@ Nice! we get 125 hz, which is the default poll rate and it's what we expect.
 ## USB configuration
 
 I'm not an expert in USB, but as far as I know USB devices never send data to
-host unannounced. They only respond to host's queries. The host polls the
-device for new data at certain rate to check if device has any new data
+the host unannounced. They only respond to host's queries. The host polls the
+device for new data at a certain rate to check if device has any new data
 to send.
 
 Different devices have different rates they support, that supported rate is
@@ -120,7 +120,7 @@ Universal Serial Bus Specification:
 
 We don't care about High-Speed, as mice are never High Speed.
 So for our device a frame is just 1ms and `bInterval` is the number
-of milliseconds.
+of frame and also milliseconds.
 
 We can find the device's configuration by `lsusb -v`
 
@@ -189,16 +189,16 @@ Device Descriptor:
 
 So our mice's `bInterval` is 10 ms. Aparrently it's rounded to the nearest
 power of 2 to 8 ms. So to get the polling rate we divide 1000ms (in a second)
-by our `bInterval` which is 8 and get 125 hz.
+by our `bInterval` which is rounded to 8 and get 125 hz.
 
-To "overclock" our mouse we need somehow make Linux think that the device's
+To "overclock" our mouse we need to somehow make Linux think that the device's
 supported rate is 500hz, which means we need to set `bInterval` to 2 (ms).
 
 ## Patching the kernel
 
 First, let's get the kernel source code, extract the archive and `cd` into it.
 This step might be different for different distributions.
-We should be able to build it and run it, which I do.
+We need to be able to build it and run it, which I can do.
 
 I'm using the latest stable kernel version which right now is 5.18.3.
 
@@ -392,7 +392,7 @@ if (maxp == 0 && !(usb_endpoint_xfer_isoc(d) && asnum == 0)) {
 ```
 
 It looks like this code is setting `bInterval` based on device speed and
-other things. Probably a decent place we can insert our code.
+other things. Probably a decent place we can insert our code into.
 
 Judging by the comments the code here sets `endpoint->desc.bInterval`
 to override it, so let's try doing the same.
@@ -415,7 +415,7 @@ to override it, so let's try doing the same.
 
 /* unmanbearpig: MX518 mouse hack */
 /* The MX518 mouse supports 500 hz poll rate, but reports only 125 hz,
- * so we can override it to get the faster rate */
+ * we can override it to get the faster rate */
 if (udev->descriptor.idVendor == 0x046d && udev->descriptor.idProduct == 0xc051) {
 	dev_warn(ddev, "overriding MX518 bInterval to 2 (500hz); config %d interface %d\n",
 	         cfgno, inum);
@@ -446,7 +446,8 @@ My kernel surprisingly worked the first time. Let's check if the patch worked:
 [    2.940385] usb 1-1.4: overriding MX518 bInterval to 2 (500hz); config 1 interface 0
 ```
 
-Looks good! Let's check if reported bInterval is changed to 2:
+Looks good! There is our log message.
+Let's check if reported bInterval is changed to 2:
 
 `> lsusb -v`
 ```
@@ -492,7 +493,7 @@ written to, but the kernel actually uses our descriptor to poll the mouse.
 Well, I'm not sure if it's good or bad that it still reports 10, but it works,
 and it's good enough for me.
 
-I suspect there might be a way to make a kernel module so that we don't have
+I suspect there might be a way to make it a kernel module so that we don't have
 to patch the kernel every time we update it, but I build my own kernel anyway,
 so it's not a problem. I doubt many people would need this feature for that old
 mouse, so as long as it works for me it's good enough.
