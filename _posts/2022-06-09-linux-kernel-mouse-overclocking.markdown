@@ -3,6 +3,7 @@ layout: post
 title:  "Overclocking mouse by patching Linux kernel"
 date:   2022-06-09 17:02:13 +0400
 categories: misc
+excerpt: Why buy a new mouse when you can patch the kernel?
 ---
 
 So I have this old Logitech MX518 mouse that I love. I haven't played any

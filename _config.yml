@@ -29,6 +29,8 @@ baseurl: "" # the subpath of your site, e.g. /blog
 
 url: "https://unmb.pw" # the base hostname & protocol for your site, e.g. http://example.com
 
+show_excerpts: true
+
 # twitter_username: jekyllrb
 github_username:  unmanbearpig
 
@@ -36,6 +38,11 @@ github_username:  unmanbearpig
 theme: minima
 plugins:
   - jekyll-feed
+
+collections:
+  ticks_and_trips:
+    output: true
+    permalink: /:collection/:name
 
 # Exclude from processing.
 # The following items will not be processed, by default.
