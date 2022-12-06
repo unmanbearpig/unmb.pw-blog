@@ -43,6 +43,7 @@ collections:
   ticks_and_trips:
     output: true
     permalink: /:collection/:name
+  links:
 
 # Exclude from processing.
 # The following items will not be processed, by default.

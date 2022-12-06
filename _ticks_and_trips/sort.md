@@ -5,7 +5,7 @@ date: 2022-12-06
 excerpt: |
   TLDR:<br>
   <pre>alias sort="LC_ALL=C \sort"</pre>
-permalink: /ticks_and_trips/sort
+permalink: /ticks_and_trips/sort.html
 ---
 
 # Faster sort
