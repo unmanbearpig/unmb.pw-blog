@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "unmenu - macos app launcher"
+date:   2024-01-22 17:02:13 +0400
+categories: project
+excerpt: No indexing, no animations, fast and high quality matching
+---
+
+![unmenu](/blog_assets/unmenu.png)
+
+![unmenu](/blog_assets/unmenu-icon.png){: style="float: left"}
+[Link to repository: github.com/unmanbearpig/unmenu](https://github.com/unmanbearpig/unmenu)
+
+A long time ago, I was using Alfred for launching apps on my Mac. Then Apple introduced Spotlight, and I switched to that because it's a one less dependency. And then I switched to Gentoo and used dmenu. Now, when I'm using both Gentoo and mac, I've noticed how bad Spotlight is compared to dmenu - a dead simple fast app that does the job well enough.
+
+dmenu is one of the suckless.org apps. Their philosophy is minimalism to the point of having configs in ".h" files, so that you need to recompile it every time you change the config. I don't use a lot of their apps but have respect for their dedication to simplicity. unmenu is not as simple, for the most part because it's a pain to compile and install compared to something like dmenu in linux.
+
+So, what I found wrong with Spotlight:
+
+ - Imperfect fuzzy matching, like "ws" not matching anything even when "Wireshark" and "WhatsApp" are available.
+ - It needs to index stuff.
+ - Has web search and too many other features that are hard to disable. At least I couldn't.
+ - It searches who knows what, often finding random files by even when I disabled searching everywhere but the "/Applications" directory.
+ - Not scriptable, can't launch anything except .app bundles.
+ - Not consistent. The same string might be completed to one app today and to another app tomorrow.
+ - Not debuggable. There is no Terminal.app in my Spotlight for some reason. How do I debug this? I don't know.
+
+I could probably fix some of those issues, but overall, it seems like a wrong tool for the job. I don't want most of the features it offers, and the ones that I do want don't work the way I want them to. Luckily, [José Luis Pereira](https://github.com/oNaiPs) wrote [dmenu-mac](https://github.com/oNaiPs/dmenu-mac), which is almost exactly what I wanted. But with a few issues, like [this bug](https://github.com/oNaiPs/dmenu-mac/issues/41) that switches to another desktop randomly when hitting the hotkey, or some issues with completion. So, I forked it to fix everything that bothers me and add some features.
+
+### Changes from dmenu-mac
+
+ - Fixed a [longstanding issue](https://github.com/oNaiPs/dmenu-mac/issues/41).
+ - Switched to Accessibility API for handling hotkeys because it seems to work well.
+ - Implemented what I believe to be a superior fuzzy matching algorithm, leveraging [lotabout/fuzzy-matcher](https://crates.io/crates/fuzzy-matcher).
+ - Introduced a configuration file located at `~/.config/unmenu/config.toml`, enabling users to customize search directories, filter out applications, and integrate scripts and aliases.
+
+### Examples of scripts and aliases
+
+#### Generate a QR code
+
+Create a file in one of the directories listed in unmenu's config with the following content. It'll generate and show a QR code from the copied text.
+Don't forget to `chmod +x` this file
+
+```sh
+#!/bin/sh
+
+set -e
+
+FILENAME="/tmp/$(date).png"
+
+pbpaste | qrencode -o "$FILENAME"
+open "$FILENAME"
+```
+
+#### Alias / run CLI command from unmenu
+To allow to run scrcpy from unmenu create a file `scrcpy` with the following content:
+
+```sh
+#!/bin/sh
+
+scrcpy
+```
+
+#### Open video in mpv video player
+```sh
+#!/bin/sh
+
+mpv `pbpaste`
+```
+
+### Implementation
+
+#### Style
+
+Intentionally quick and dirty. I never finish my projects because of my desire to improve one thing or another before writing a blog post or even README and publishing it somewhere. So this time I focused on making it work the way I want and not worrying about how exactly I've done it and if the code looks good. The code is terrible, there are still some debug statements, commented out code, most git commit messages are 1 line if not 1 word or 1 character. But who cares! I've been using it for half a year without an issue. There is not much code so I'll figure it out next time I need to change something, which would probably happen not sooner than in a year.
+Works well enough for me already, so there is nothing to change.
+
+#### Hotkey handling
+
+I suspected that deprecated APIs like `getEventMonitorTarget` that were used originally were the cause of the bugs, so I switched to the API that requires additional permissions but seems to work without an issue.
+
+#### Fuzzy matching
+
+I've chosen to use a Rust library (https://github.com/lotabout/fuzzy-matcher) for fuzzy matching, mostly because Rust is more familiar, and I don't need to use Xcode for that part of the project. Works well enough for now. I needed to make an interop via C API, and had to debug a few issues with my memory management, but that's okay. I probably learned something along the way, but I did that part half a year ago so don't really remember. I should really write the blog post just after I implement something interesting instead of waiting for half a year.
+
+### LLM Conclusion
+
+Unmenu, my fork of dmenu-mac, aims to provide a more efficient and reliable application launcher for macOS users who prefer a keyboard-centric workflow. By addressing the limitations and bugs found in dmenu-mac and Spotlight, Unmenu offers a superior fuzzy matching algorithm, hotkey handling, and a customizable configuration file. This project not only improves upon the original dmenu-mac but also enhances the overall user experience by making app launching faster and more intuitive.
