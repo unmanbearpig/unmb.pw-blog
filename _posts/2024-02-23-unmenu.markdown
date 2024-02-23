@@ -2,7 +2,7 @@
 layout: post
 title:  "unmenu - macos app launcher"
 date:   2024-01-22 17:02:13 +0400
-categories: project
+categories: misc
 excerpt: No indexing, no animations, fast and high quality matching
 ---
 
@@ -10,6 +10,8 @@ excerpt: No indexing, no animations, fast and high quality matching
 
 ![unmenu](/blog_assets/unmenu-icon.png){: style="float: left"}
 [Link to repository: github.com/unmanbearpig/unmenu](https://github.com/unmanbearpig/unmenu)
+
+[Download here](https://github.com/unmanbearpig/unmenu/releases/)
 
 A long time ago, I was using Alfred for launching apps on my Mac. Then Apple introduced Spotlight, and I switched to that because it's a one less dependency. And then I switched to Gentoo and used dmenu. Now, when I'm using both Gentoo and mac, I've noticed how bad Spotlight is compared to dmenu - a dead simple fast app that does the job well enough.
 

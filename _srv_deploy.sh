@@ -2,14 +2,24 @@
 
 set -e
 
-cd /var/www/htdocs/
+echo "running on the server..."
 
-if [[ ! -d prev_unmb.pw ]]; then
-	mkdir prev_unmb.pw
+cd /var/www/htdocs/unmb.pw
+
+if [[ ! -d prev_blog ]]; then
+	mkdir prev_blog
 fi
 
-rm -rf prev_unmb.pw/*
-mv unmb.pw/* prev_unmb.pw
+# this is dangerous so I'm using rsync without `--delete` instead
 
-cp -r /home/user/_site/* unmb.pw
-chown -R www unmb.pw
+echo "copying to prod directory..."
+rm -rf prev_blog/*
+mv blog/* prev_blog
+
+cp -r /home/user/_site/* blog
+
+
+echo "setting permissions..."
+chown -R www blog
+
+echo "done running on the server"
