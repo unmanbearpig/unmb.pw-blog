@@ -50,7 +50,7 @@ It seems like `preventDefault` and `stopPropagation` don't achieve what I intend
 Now I just have to figure out what to replace it with.
 
 Shouldn't be hard, let's find some code that does it.
-A quick search on addons.mozilla.org provided me with a bunch of extensionsprovided me with a bunch of extensions. Upon expecting the source code of the first one, I found:
+A quick search on addons.mozilla.org provided me with a bunch of extensions. Upon expecting the source code of the first one, I found:
 ```js
     event.stopImmediatePropagation();
 ```
