@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "KeyFortress - speedrunning to my first Firefox extension"
-date:   2024-01-22 17:02:13 +0400
+date:   2024-03-12 17:02:13 +0400
 categories: misc
 excerpt: "How little time can I spend to make a useful extension? - about 3hr"
 ---
