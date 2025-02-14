@@ -11,7 +11,7 @@ layout: default
 
   {%- if site.travel.size > 0 -%}
     <ul class="post-list">
-      {%- for post in site.travel -%}
+      {%- for post in site.travel reversed -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>

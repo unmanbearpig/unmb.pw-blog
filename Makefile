@@ -1,9 +1,9 @@
 build:
-	bundle exec jekyll build
+	bash --login -c "chruby-init; bundle exec jekyll build"
 
 serve:
-	bundle exec jekyll serve
+	bash --login -c "chruby-init; bundle exec jekyll serve"
 run: serve
 
-deploy: build
-	./_deploy.sh
+# deploy: build
+# 	./_deploy.sh
