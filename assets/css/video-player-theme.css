@@ -1,0 +1,13 @@
+video-player {
+  --select-bg: #fff;
+  --select-color: #000;
+  --select-border: #ccc;
+}
+
+@media (prefers-color-scheme: dark) {
+  video-player {
+    --select-bg: #333;
+    --select-color: #fff;
+    --select-border: #666;
+  }
+} 

@@ -7,24 +7,18 @@ excerpt: Watch what happens when I use my action camera to catch fish in a Patag
 permalink: /travel/2025-02-04-under-big-river.html
 ---
 
-<div class="video-container">
-  <video controls loading="lazy" preload="none" poster="https://f005.backblazeb2.com/file/motovids/river_toss.jpg">
-    <source src="https://f005.backblazeb2.com/file/motovids/river_toss.mov" type="video/quicktime">
-    Your browser does not support the video tag.
-  </video>
-</div>
+<video-player
+  vid-id="river_vid"
+  poster="https://f005.backblazeb2.com/file/motovids/river_toss.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/river_toss_2160p_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/river_toss_1440p_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/river_toss_1080p_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/river_toss_720p_crf27.mp4"
+  ]'>
+</video-player>
 
-<div class="video-container">
-  <video controls loading="lazy" preload="none">
-    <source src="https://f005.backblazeb2.com/file/motovids/river_toss_2160p_crf23.mp4" type="video/mp4" size="2160" media="(min-width: 3920px)">
-    <source src="https://f005.backblazeb2.com/file/motovids/river_toss_1440p_crf25.mp4" type="video/mp4" size="1440" media="(min-width: 2640px)">
-    <source src="https://f005.backblazeb2.com/file/motovids/river_toss_1080p_crf26.mp4" type="video/mp4" size="1080" media="(min-width: 2000px)">
-    <source src="https://f005.backblazeb2.com/file/motovids/river_toss_720p_crf27.mp4" type="video/mp4" size="720">
-    Your browser does not support the video tag.
-  </video>
-</div>
-
-
+Let's see what happens when I use my action camera to catch fish in a Patagonian river.
 
 Here are the results of my experiment:
 
