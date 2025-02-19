@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Ñandu on the way to Piedra Parada"
+date:   2025-02-19 17:02:13 +0400
+categories: travel
+permalink: /travel/2025-02-19-nyandu.html
+---
+
+
+<video-player
+  vid-id="nyandu_vid"
+  poster="https://f005.backblazeb2.com/file/motovids/nyandu.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/nyandu_2160p_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/nyandu_1440p_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/nyandu_1080p_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/nyandu_720p_crf27.mp4"
+  ]'>
+</video-player>
