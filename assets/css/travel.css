@@ -316,30 +316,75 @@ body.travel-page {
 .travel-page .post-list {
     margin-left: 0;
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .travel-page .post-list h3 {
     margin-bottom: 5px;
+    margin-top: 8px;
 }
 
-.travel-page .post-list > li {
+/* Travel post item styling */
+.travel-page .post-list .travel-post-item {
+    padding: 15px;
+    position: relative;
+    transition: all 0.25s ease;
+    background-color: rgba(30, 30, 30, 0.2);
+    border-radius: 8px;
+}
+
+/* Hover effect for posts */
+.travel-page .post-list .travel-post-item:hover {
+    transform: translateY(-2px);
+    background-color: rgba(40, 40, 40, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Date styling */
+.travel-page .post-list .travel-post-item .post-meta {
+    font-size: 0.85em;
+    color: #888;
+}
+
+/* Enhance post links */
+.travel-page .post-list .travel-post-item .post-link {
+    font-size: 1.4em;
+    color: #f0f0f0;
+    transition: color 0.2s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.travel-page .post-list .travel-post-item:hover .post-link {
+    color: #fff;
+}
+
+/* Post page title styling */
+.travel-page .post-header {
     margin-bottom: 30px;
-    border-bottom: 1px solid #333333;
-    padding-bottom: 20px;
-}
-
-.travel-page .post-list > li:last-child {
-    border-bottom: none;
-}
-
-.travel-page .post-meta {
-    color: #9e9e9e;
 }
 
 .travel-page .post-title {
-    font-size: 2.2em;
-    margin-bottom: 0.3em;
+    font-size: 2.4em;
+    margin-bottom: 10px;
     color: #ffffff;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.travel-page .post-meta {
+    color: #888;
+    font-size: 0.9em;
+}
+
+/* Page heading for index */
+.travel-page .page-heading {
+    margin-bottom: 25px;
+    font-size: 2.5em;
+    letter-spacing: -0.5px;
+    color: #fff;
 }
 
 /* Code blocks in dark theme */
