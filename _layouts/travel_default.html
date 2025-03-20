@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {%- include head.html -%}
+
+  <head>
+    <link rel="stylesheet" href="/assets/css/video-player-theme.css">
+    <script src="/assets/js/video-player.js" defer></script>
+    <link rel="stylesheet" href="/assets/css/travel.css?v={{ site.time | date: '%s' }}">
+    <script src="/assets/js/travel.js?v={{ site.time | date: '%s' }}" defer></script>
+  </head>
+
+  <body class="travel-page" data-layout="{{ page.layout }}">
+
+    <header class="site-header">
+      <div class="wrapper">
+        <div class="travel-header-container">
+          <!-- Title on the left -->
+          <a class="site-title" href="/travel/">unmanbearpig/travel</a>
+          
+          <!-- Navigation on the right -->
+          <div class="travel-nav">
+            <a href="/" class="travel-home-link">Main Site</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        {{ content }}
+      </div>
+    </main>
+
+    {%- include footer.html -%}
+
+    <!-- Simple scroll detection script -->
+    <script>
+      // -> init_travel_scroll Smaller standalone scroll detection
+      document.addEventListener("DOMContentLoaded", function() {
+        function updateScrollState() {
+          const scrollPos = window.scrollY;
+          const viewportHeight = window.innerHeight;
+          const scrollPercentage = (scrollPos / viewportHeight) * 100;
+          
+          if (scrollPercentage > 10) {
+            document.body.classList.add('scrolled');
+            if (scrollPercentage > 20) {
+              document.body.classList.add('header-hidden');
+            } else {
+              document.body.classList.remove('header-hidden');
+            }
+          } else {
+            document.body.classList.remove('scrolled');
+            document.body.classList.remove('header-hidden');
+          }
+        }
+        
+        // Initial check
+        updateScrollState();
+        
+        // Throttled scroll handler
+        let scrollTimeout;
+        let lastScrollPos = 0;
+        
+        window.addEventListener('scroll', function() {
+          // Show header immediately when scrolling up
+          const currentScrollPos = window.scrollY;
+          if (currentScrollPos < lastScrollPos) {
+            document.body.classList.remove('header-hidden');
+          }
+          lastScrollPos = currentScrollPos;
+          
+          // Throttle main updates
+          if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function() {
+              updateScrollState();
+              scrollTimeout = null;
+            }, 100);
+          }
+        });
+        
+        // Handle resize
+        window.addEventListener('resize', updateScrollState);
+      });
+    </script>
+
+  </body>
+
+</html>

@@ -40,7 +40,8 @@ body.travel-page {
 
 /* Fix site header wrapper to ensure proper alignment */
 .travel-page .site-header .wrapper {
-    width: 100%;
+    width: var(--content-max-width);
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -68,6 +69,29 @@ body.travel-page {
     padding: 0;
     line-height: var(--header-height);
     float: none;
+    position: relative; /* For positioning the travel link */
+}
+
+/* Hide the ::after content since we'll use a real link instead */
+.travel-page .site-title::after {
+    content: none;
+}
+
+/* Create a travel section link */
+.travel-page .travel-section-link {
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    opacity: 0.85;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 1px; /* Small space between main title and /travel */
+}
+
+/* Style the travel link on hover */
+.travel-page .travel-section-link:hover {
+    opacity: 1;
+    color: #fff;
 }
 
 .travel-page .site-nav {
@@ -167,8 +191,8 @@ body.travel-page {
     max-width: var(--content-max-width);
     margin: 0 auto;
     padding-top: 20px; /* Reduced from header height + 20px since we're using padding on page-content */
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left:  0px;
+    padding-right: 0px;
     transition: max-width 0.3s ease, padding 0.3s ease;
 }
 
@@ -340,7 +364,7 @@ body.travel-page {
 
 .travel-page a:hover {
     color: #74c0fc;
-    // text-decoration: none;
+    /* text-decoration: none; */
 }
 
 /* Post and content styling */
@@ -501,7 +525,6 @@ body.travel-page {
 
 /* Ensure site title is centered for travel pages */
 .travel-page .site-header .site-title {
-    margin: 0 auto 0 15px;
     float: none;
 }
 
@@ -535,4 +558,20 @@ body.travel-page {
     .travel-page .page-content {
         padding-top: 50px;
     }
+}
+
+/* Travel header container for proper alignment */
+.travel-page .travel-header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+/* Reposition travel nav from absolute to relative */
+.travel-page .travel-nav {
+  position: relative;
+  right: auto;
+  top: auto;
 }
