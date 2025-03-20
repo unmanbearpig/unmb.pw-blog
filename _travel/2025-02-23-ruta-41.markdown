@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: travel-post
 title: "Ruta 41"
 date:   2025-02-23 17:02:13 +0400
 categories: travel

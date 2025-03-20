@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: travel-post
 title:  "Valley Paraglider"
 date:   2025-02-14 17:02:13 +0400
 categories: travel

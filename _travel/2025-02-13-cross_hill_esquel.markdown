@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: travel-post
 title: "Cross Hill Esquel"
 date:   2025-02-13 17:02:13 +0400
 categories: travel

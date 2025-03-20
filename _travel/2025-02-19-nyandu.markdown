@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: travel-post
 title: "Ñandu on the way to Piedra Parada"
 date:   2025-02-19 17:02:13 +0400
 categories: travel

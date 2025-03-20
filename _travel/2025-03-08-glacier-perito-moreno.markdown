@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: travel-post
 title: "Perito Moreno the glacier"
 date:   2025-03-08 17:02:13 +0400
 categories: travel

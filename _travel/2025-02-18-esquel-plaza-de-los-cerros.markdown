@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: travel-post
 title:  "Esquel - Plaza de los Cerros"
 date:   2025-02-18 17:02:13 +0400
 categories: travel

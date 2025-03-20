@@ -1,0 +1,68 @@
+/* Custom styles for travel pages */
+
+/* Make the wrapper wider with smaller margins for travel pages */
+body.travel-page .wrapper {
+    max-width: 90%;  /* Much wider than default */
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/* Adjust video container for wider layout */
+body.travel-page .video-container {
+    margin-bottom: 2em;
+}
+
+/* Make sure images can also be wider */
+body.travel-page img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Style adjustments for travel page content */
+body.travel-page .post-list {
+    margin-left: 0;
+    list-style: none;
+}
+
+body.travel-page .post-list h3 {
+    margin-bottom: 5px;
+}
+
+/* Add some spacing between travel posts */
+body.travel-page .post-list > li {
+    margin-bottom: 30px;
+}
+
+/* Specific styles for travel posts */
+body.travel-page article.post {
+    max-width: 100%;
+}
+
+body.travel-page .post-content {
+    width: 100%;
+}
+
+/* Ensure videos display at maximum width in travel posts */
+body.travel-page video-player,
+body.travel-page .video-container,
+body.travel-page video,
+body.travel-page iframe {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1.5em;
+}
+
+/* Add some spacing between multiple videos */
+body.travel-page video-player + video-player {
+    margin-top: 2em;
+}
+
+/* Make post title more prominent */
+body.travel-page .post-title {
+    font-size: 2.2em;
+    margin-bottom: 0.3em;
+}
