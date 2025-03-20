@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="/assets/css/video-player-theme.css">
     <script src="/assets/js/video-player.js" defer></script>
     {% if page.layout == 'travel' or page.layout == 'travel-post' or layout.name == 'travel' %}
-    <link rel="stylesheet" href="/assets/css/travel.css">
+    <link rel="stylesheet" href="/assets/css/travel.css?v={{ site.time | date: '%s' }}">
+    <script src="/assets/js/travel.js?v={{ site.time | date: '%s' }}" defer></script>
     {% endif %}
   </head>
 
-  <body {% if page.layout == 'travel' or page.layout == 'travel-post' or layout.name == 'travel' %}class="travel-page"{% endif %}>
+  <body {% if page.layout == 'travel' or page.layout == 'travel-post' or layout.name == 'travel' %}class="travel-page" data-layout="{{ page.layout }}"{% endif %}>
 
     {%- include header.html -%}
 
