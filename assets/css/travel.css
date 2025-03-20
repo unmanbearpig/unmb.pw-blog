@@ -5,20 +5,40 @@ body.travel-page {
     background-color: #000000; /* Absolute black for OLED */
     color: #e0e0e0; /* Light gray text for contrast */
     transition: background-color 0.5s ease, color 0.5s ease;
+    border-top: 0 !important; /* Override any top border on body */
+    margin-top: 0 !important; /* Remove any top margin */
 }
 
 /* Style the header for dark theme - remove top gray bar */
 body.travel-page .site-header {
     background-color: #000000;
-    border-top: none; /* Remove the top border completely */
-    border-bottom-color: #333333;
+    border-top: 0 !important; /* Remove the top border completely with !important */
+    border-bottom: 1px solid #333333;
     transition: background-color 0.5s ease, border-color 0.5s ease;
+    min-height: 45px; /* Reduce min-height to tighten things up */
+    position: relative;
+    padding-top: 0; /* Remove top padding */
+    padding-bottom: 0; /* Remove bottom padding */
+    margin-top: 0; /* Remove top margin */
+    margin-bottom: 0; /* Remove bottom margin */
 }
 
 /* Remove any top padding that might create space */
-body.travel-page header.site-header {
+body.travel-page .site-header .wrapper {
     padding-top: 0;
-    min-height: auto;
+    padding-bottom: 0;
+}
+
+/* Override any theme-specific border or background */
+body.travel-page:before,
+body.travel-page:after {
+    display: none !important;
+}
+
+/* Remove any potential div that might create a top bar */
+body.travel-page > div.top-bar,
+body.travel-page > div:first-child {
+    display: none !important;
 }
 
 /* Style site title and nav links */
@@ -28,10 +48,76 @@ body.travel-page .site-nav .page-link {
     transition: color 0.5s ease;
 }
 
-/* Main content container */
+/* Fix site title positioning */
+body.travel-page .site-title {
+    padding-top: 0;
+    margin-top: 6px; /* Reduced from 8px */
+    margin-bottom: 6px;
+    line-height: 32px; /* Adjust line height to properly center text */
+}
+
+/* Fix hamburger menu spacing */
+body.travel-page .site-nav {
+    line-height: 42px; /* Adjusted to match header height */
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Style the hamburger menu icon - adjusted positioning */
+body.travel-page .site-nav .menu-icon {
+    margin-top: 0px; /* Reduced from 8px */
+    height: 26px; /* Slightly reduced height */
+    width: 36px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+body.travel-page .site-nav .menu-icon > svg {
+    fill: #f0f0f0; /* Light color for the hamburger icon */
+    height: 20px; /* Control SVG size */
+    width: 20px;
+    vertical-align: middle;
+}
+
+/* Style the hamburger menu when expanded */
+body.travel-page .site-nav .trigger {
+    background-color: #0a0a0a; /* Slightly lighter than black */
+    border: 1px solid #333333;
+    border-radius: 3px;
+}
+
+/* Fix nav menu positioning in mobile view */
+@media screen and (max-width: 600px) {
+    body.travel-page .site-nav {
+        position: absolute;
+        top: 5px; /* Reduced from 7px to move it up */
+        right: 10px;
+        background-color: transparent;
+        border: none;
+    }
+    
+    body.travel-page .site-nav input:checked ~ .trigger {
+        padding-bottom: 5px;
+    }
+    
+    body.travel-page .site-nav .page-link {
+        margin-right: 0;
+        margin-left: 0;
+        padding: 5px 10px;
+    }
+    
+    body.travel-page .site-nav .page-link:hover {
+        background-color: #333333;
+    }
+}
+
+/* Main content container with adjusted spacing */
 body.travel-page .page-content {
     background-color: #000000;
     transition: background-color 0.5s ease;
+    padding-top: 15px; /* Add some spacing after the header */
 }
 
 /* Make the wrapper wider with smaller margins for travel pages */
