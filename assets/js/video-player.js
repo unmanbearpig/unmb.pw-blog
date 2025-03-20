@@ -56,7 +56,7 @@ class VideoPlayer extends HTMLElement {
       </style>
 
       <div class="video-container">
-        <video id="${vidId}" controls loading="lazy" preload="none" poster="${poster}">
+        <video id="${vidId}" controls loading="lazy" preload="none" poster="${poster}" muted>
           ${sources.map(src => {
             const res = src.match(/_(\d{3,4})p/)?.[1];
             const media = res && res !== '720' ? 
