@@ -194,6 +194,7 @@ body.travel-page {
     border-radius: 8px;
     width: 100%;
     max-width: 100%;
+    border: none;
 }
 
 /* Force video players to be full width */
@@ -208,6 +209,15 @@ body.travel-page {
     box-sizing: border-box !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+    border: none !important;
+}
+
+/* Make sure videos and divs inside video players have no borders */
+.travel-page video-player video,
+.travel-page video-player div,
+.travel-page .fullwidth-video video,
+.travel-page .fullwidth-video div {
+    border: none !important;
 }
 
 /* Quality selector containment */
@@ -228,14 +238,35 @@ body.travel-page {
     right: auto !important;
 }
 
-/* Add spacing after videos */
-.travel-page video-player::after {
-    content: "";
-    display: block;
-    height: 1px;
-    background-color: #333;
-    width: 80%;
-    margin: 20px auto 0 auto;
+/* Add spacing after videos - COMPLETELY REMOVED */
+/* Remove all ::after content from video players */
+.travel-page video-player::after,
+.travel-page .video-player::after,
+.travel-page .fullwidth-video::after {
+    content: none !important;
+    display: none !important;
+    border: none !important;
+    margin: 0 !important;
+    height: 0 !important;
+}
+
+/* Ensure all videos, iframes and embedded content have no borders */
+.travel-page video,
+.travel-page iframe,
+.travel-page video-player,
+.travel-page .video-player,
+.travel-page .fullwidth-video,
+.travel-page .video-container {
+    border: none !important;
+    border-bottom: none !important;
+    border-top: none !important;
+    box-shadow: none !important;
+}
+
+/* Ensure video container has proper spacing without borders */
+.travel-page .video-container {
+    margin: 30px 0 !important;
+    padding: 0 !important;
 }
 
 /* Full-height screens - ensure video isn't too big */
@@ -309,7 +340,7 @@ body.travel-page {
 
 .travel-page a:hover {
     color: #74c0fc;
-    text-decoration: none;
+    // text-decoration: none;
 }
 
 /* Post and content styling */
@@ -331,15 +362,7 @@ body.travel-page {
     padding: 15px;
     position: relative;
     transition: all 0.25s ease;
-    background-color: rgba(30, 30, 30, 0.2);
     border-radius: 8px;
-}
-
-/* Hover effect for posts */
-.travel-page .post-list .travel-post-item:hover {
-    transform: translateY(-2px);
-    background-color: rgba(40, 40, 40, 0.3);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Date styling */
@@ -357,8 +380,10 @@ body.travel-page {
     display: block;
 }
 
-.travel-page .post-list .travel-post-item:hover .post-link {
+.travel-page .post-list .travel-post-item .post-link:hover {
     color: #fff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 
+                 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 /* Post page title styling */
@@ -465,7 +490,6 @@ body.travel-page {
 
 .travel-page .travel-home-link:hover {
     color: #fff;
-    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Back arrow for travel links */

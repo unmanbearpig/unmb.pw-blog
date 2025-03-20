@@ -23,6 +23,11 @@ travel_page: true
         </h3>
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
+          {%- if post.content != post.excerpt -%}
+            <p class="read-more-link">
+              <a href="{{ post.url | relative_url }}">Show more</a>
+            </p>
+          {%- endif -%}
         {%- endif -%}
       </li>
       {%- endfor -%}
