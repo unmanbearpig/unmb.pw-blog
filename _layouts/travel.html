@@ -24,8 +24,16 @@ travel_page: true
         {%- if site.show_excerpts -%}
           {{ post.excerpt }}
           {%- if post.content != post.excerpt -%}
+            {%- assign excerpt_vids = post.excerpt | split: "<video-player" | size | minus: 1 -%}
+            {%- assign full_vids = post.content | split: "<video-player" | size | minus: 1 -%}
+            {%- assign more_vids = full_vids | minus: excerpt_vids -%}
             <p class="read-more-link">
-              <a href="{{ post.url | relative_url }}">Show more</a>
+              <a href="{{ post.url | relative_url }}">
+                Show more
+                {%- if more_vids > 0 -%}
+                  ({{ more_vids }} more video{% if more_vids > 1 %}s{% endif %})
+                {%- endif -%}
+              </a>
             </p>
           {%- endif -%}
         {%- endif -%}
