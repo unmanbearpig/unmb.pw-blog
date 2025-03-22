@@ -7,6 +7,51 @@ permalink: /travel/2025-02-23-ruta-41.html
 ---
 
 <video-player
+  vid-id="ruta41_0_4"
+  poster="https://f005.backblazeb2.com/file/motovids/ruta41_0_4.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/ruta41_0_4_2160p_x264_high_fast_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41_0_4_1440p_x264_high_fast_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41_0_4_1080p_x264_high_fast_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41_0_4_720p_x264_high_fast_crf27.mp4"
+  ]'>
+</video-player>
+
+<video-player
+  vid-id="ruta41-5-vapor"
+  poster="https://f005.backblazeb2.com/file/motovids/ruta41_5_vapor.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/ruta41-5-vapor_2160p_x264_high_fast_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-5-vapor_1440p_x264_high_fast_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-5-vapor_1080p_x264_high_fast_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-5-vapor_720p_x264_high_fast_crf27.mp4"
+  ]'>
+</video-player>
+
+<video-player
+  vid-id="ruta41-0-8"
+  poster="https://f005.backblazeb2.com/file/motovids/ruta41_0_8.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-8_2160p_x264_high_fast_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-8_1440p_x264_high_fast_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-8_1080p_x264_high_fast_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-8_720p_x264_high_fast_crf27.mp4"
+  ]'>
+</video-player>
+
+<video-player
+  vid-id="ruta41-0-9"
+  poster="https://f005.backblazeb2.com/file/motovids/ruta41_0_9.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-9_2160p_x264_high_fast_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-9_1440p_x264_high_fast_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-9_1080p_x264_high_fast_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-0-9_720p_x264_high_fast_crf27.mp4"
+  ]'>
+</video-player>
+
+
+<video-player
   vid-id="ruta41-3-nowifi"
   poster="https://f005.backblazeb2.com/file/motovids/ruta41_3_nowifi.jpg"
   sources='[
@@ -80,6 +125,17 @@ permalink: /travel/2025-02-23-ruta-41.html
     "https://f005.backblazeb2.com/file/motovids/mordor_lake_1440p_x264_high_fast_crf25.mp4",
     "https://f005.backblazeb2.com/file/motovids/mordor_lake_1080p_x264_high_fast_crf26.mp4",
     "https://f005.backblazeb2.com/file/motovids/mordor_lake_720p_x264_high_fast_crf27.mp4"
+  ]'>
+</video-player>
+
+<video-player
+  vid-id="ruta41-9"
+  poster="https://f005.backblazeb2.com/file/motovids/ruta41_9.jpg"
+  sources='[
+    "https://f005.backblazeb2.com/file/motovids/ruta41-9_2160p_x264_high_fast_crf23.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-9_1440p_x264_high_fast_crf25.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-9_1080p_x264_high_fast_crf26.mp4",
+    "https://f005.backblazeb2.com/file/motovids/ruta41-9_720p_x264_high_fast_crf27.mp4"
   ]'>
 </video-player>
 
