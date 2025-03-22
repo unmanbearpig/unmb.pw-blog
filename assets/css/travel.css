@@ -575,3 +575,285 @@ body.travel-page {
   right: auto;
   top: auto;
 }
+
+/* Gallery System */
+.gallery {
+    margin: 2rem 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+/* Basic image container */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Layout classes */
+.full {
+    width: 100%;
+    margin: 1rem 0;
+}
+
+.half {
+    width: calc(50% - 0.5rem);
+}
+
+.third {
+    width: calc(33.333% - 0.67rem);
+}
+
+.two-thirds {
+    width: calc(66.666% - 0.33rem);
+}
+
+/* Special layouts */
+.side-by-side {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.side-by-side .gallery-item {
+    width: calc(50% - 0.5rem);
+}
+
+/* Grid layouts */
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.grid-3x3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Carousel */
+.carousel {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    transition: transform 0.3s ease;
+}
+
+.carousel .gallery-item {
+    min-width: 100%;
+    flex: 0 0 100%;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.carousel-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 600px) {
+    .third, .two-thirds {
+        width: 100%;
+    }
+    
+    .grid-3x3 {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .side-by-side {
+        flex-direction: column;
+    }
+    
+    .side-by-side .gallery-item {
+        width: 100%;
+    }
+}
+
+/* Video in gallery */
+.gallery video-player {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.gallery video-player video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Remove any margin/padding from video players in gallery */
+.gallery video-player,
+.gallery .video-player,
+.gallery .fullwidth-video {
+    margin: 0 !important;
+    border-radius: 8px !important;
+}
+
+/* Hide video controls by default */
+.gallery video-player .video-controls {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Show controls on hover */
+.gallery video-player:hover .video-controls {
+    opacity: 1;
+}
+
+/* Update fullscreen styles */
+.fullscreen-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.fullscreen-overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fullscreen-content {
+    position: relative;
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+.fullscreen-content img,
+.fullscreen-content video-player {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+}
+
+/* Navigation buttons */
+.fullscreen-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.fs-nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 24px;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+    opacity: 0.3;
+}
+
+.fs-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.9);
+    opacity: 1;
+}
+
+/* Make only non-full gallery items clickable */
+.gallery-item:not(.full) {
+    cursor: pointer;
+}
+
+/* Full items should not show pointer cursor */
+.gallery-item.full {
+    cursor: default;
+}
+
+/* Random cycle items should not zoom */
+.random-cycle .gallery-item {
+    cursor: default;
+}
+
+/* Random cycle gallery */
+.random-cycle {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.random-cycle .gallery-item {
+    display: none;
+    width: 100%;
+}
+
+.random-cycle .gallery-item.active {
+    display: block;
+}
+
+.random-cycle-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    pointer-events: none;
+}
+
+.random-cycle-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+    pointer-events: auto;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.random-cycle-btn:hover {
+    opacity: 1;
+}
