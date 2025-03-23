@@ -98,13 +98,12 @@ permalink: /travel/2025-03-22-santiago.html
     </div>
 </div>
 
-<h2>night</h2>
 <div class="gallery grid-3x3">
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_181820.jpg" alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_181213.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_181213_flip.jpg" alt="Santiago">
     </div>
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_191943.jpg" alt="Santiago">
@@ -138,7 +137,7 @@ permalink: /travel/2025-03-22-santiago.html
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_170354.jpg" alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_172239.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_172239_flip.jpg" alt="Santiago">
     </div>
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_204545.jpg" alt="Santiago">
@@ -151,7 +150,23 @@ permalink: /travel/2025-03-22-santiago.html
     </div>
 </div>
 
-<h2>Sunset</h2>
+<div class="gallery">
+    <div class="gallery-item full">
+        <video-player
+            class="gallery-video"
+            vid-id="ciclovia_out"
+            aspect-ratio="16:9"
+            poster="https://f005.backblazeb2.com/file/motovids/photos/santiago/ciclovia_out.jpg"
+            sources='[
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/ciclovia_out_2160p_x264_high_fast_crf23.mp4",
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/ciclovia_out_1440p_x264_high_fast_crf25.mp4",
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/ciclovia_out_1080p_x264_high_fast_crf26.mp4",
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/ciclovia_out_720p_x264_high_fast_crf27.mp4"
+            ]'>
+        </video-player>
+    </div>
+</div>
+
 <div class="gallery random-cycle">
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174410.jpg" alt="Santiago">
@@ -179,7 +194,6 @@ permalink: /travel/2025-03-22-santiago.html
     </div>
 </div>
 
-<!-- Late Summer Views -->
 <div class="gallery side-by-side">
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_172003.jpg" alt="Santiago">
@@ -188,22 +202,57 @@ permalink: /travel/2025-03-22-santiago.html
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_152130.jpg" alt="Santiago">
     </div>
 </div>
+
+<div class="gallery">
+    <div class="gallery-item full">
+        <video-player
+        class="gallery-video"
+        muted
+        vid-id="zorro"
+        aspect-ratio="16:9"
+        poster="https://f005.backblazeb2.com/file/motovids/photos/santiago/zorro.jpg"
+        sources='[
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/zorro_2160p_x264_high_fast_crf23.mp4",
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/zorro_1440p_x264_high_fast_crf25.mp4",
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/zorro_1080p_x264_high_fast_crf26.mp4",
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/zorro_720p_x264_high_fast_crf27.mp4"
+        ]'>
+        </video-player>
+    </div>
+</div>
+
 <div class="gallery side-by-side">
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_171841.jpg" alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240905_180933.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240905_180933_flip.jpg" alt="Santiago">
     </div>
 </div>
 
-<!-- Fall Views -->
 <div class="gallery side-by-side">
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240910_192345.jpg" alt="Santiago">
     </div>
     <div class="gallery-item">
         <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240916_131509.jpg" alt="Santiago">
+    </div>
+</div>
+
+
+<div class="gallery">
+    <div class="gallery-item full">
+        <video-player
+            class="gallery-video"
+            vid-id="manquehue_bird"
+            poster="https://f005.backblazeb2.com/file/motovids/photos/santiago/manquehue_bird.jpg"
+            sources='[
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/manquehue_bird_2160p_x264_high_fast_crf23.mp4",
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/manquehue_bird_1440p_x264_high_fast_crf25.mp4",
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/manquehue_bird_1080p_x264_high_fast_crf26.mp4",
+                "https://f005.backblazeb2.com/file/motovids/photos/santiago/manquehue_bird_720p_x264_high_fast_crf27.mp4"
+            ]'>
+        </video-player>
     </div>
 </div>
 
@@ -216,22 +265,20 @@ permalink: /travel/2025-03-22-santiago.html
     </div>
 </div>
 
-<!-- Videos Section -->
-<h2>Videos</h2>
 <div class="gallery">
     <div class="gallery-item full">
-        <video-player muted src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240519_124343.mp4"></video-player>
-    </div>
-    <div class="gallery-item full">
-        <video-player muted src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240519_151014.mp4"></video-player>
-    </div>
-    <div class="gallery-item full">
-        <video-player muted src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_142453_1.mp4"></video-player>
-    </div>
-    <div class="gallery-item full">
-        <video-player muted src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240630_180233_1.mp4"></video-player>
-    </div>
-    <div class="gallery-item full">
-        <video-player muted src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240901_140303.mp4"></video-player>
+        <video-player
+        class="gallery-video"
+        muted
+        vid-id="glider"
+        poster="https://f005.backblazeb2.com/file/motovids/photos/santiago/glider.jpg"
+        sources='[
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/glider_2160p_x264_high_fast_crf23.mp4",
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/glider_1440p_x264_high_fast_crf25.mp4",
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/glider_1080p_x264_high_fast_crf26.mp4",
+            "https://f005.backblazeb2.com/file/motovids/photos/santiago/glider_720p_x264_high_fast_crf27.mp4"
+        ]'>
+        </video-player>
+
     </div>
 </div>

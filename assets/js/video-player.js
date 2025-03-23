@@ -5,7 +5,7 @@ class VideoPlayer extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['poster', 'sources'];
+    return ['poster', 'sources', 'aspect-ratio'];
   }
 
   connectedCallback() {
@@ -27,12 +27,33 @@ class VideoPlayer extends HTMLElement {
         sessionStorage.removeItem('videoPlayerState');
       }
     }
+
+    // Check if this is a gallery video
+    if (this.classList.contains('gallery-video')) {
+      this.video.muted = true;
+      
+      // Remove controls attribute if present
+      this.video.removeAttribute('controls');
+      
+      // Add hover event to show/hide controls
+      this.addEventListener('mouseenter', () => {
+        this.video.controls = true;
+      });
+      
+      this.addEventListener('mouseleave', () => {
+        this.video.controls = false;
+      });
+    }
   }
 
   render() {
     const vidId = this.getAttribute('vid-id') || 'vid_' + Math.random().toString(36).slice(2);
     const poster = this.getAttribute('poster');
     const sources = JSON.parse(this.getAttribute('sources') || '[]');
+    const aspectRatio = this.getAttribute('aspect-ratio') || '16:9';
+    const [w, h] = aspectRatio.split(':').map(Number);
+    const paddingBottom = (h / w * 100).toFixed(2);
+    const isGalleryVideo = this.classList.contains('gallery-video');
     
     // Extract resolutions using regex
     const resolutions = sources
@@ -44,12 +65,13 @@ class VideoPlayer extends HTMLElement {
       <style>
         :host {
           display: block;
+          width: 100%;
+          height: 100%;
         }
         .video-container {
           position: relative;
-          padding-bottom: 56.25%;
-          height: 0;
-          overflow: hidden;
+          width: 100%;
+          padding-bottom: ${paddingBottom}%;  /* Dynamic aspect ratio */
         }
         video {
           position: absolute;
@@ -57,6 +79,7 @@ class VideoPlayer extends HTMLElement {
           left: 0;
           width: 100%;
           height: 100%;
+          object-fit: contain;
         }
         .quality-selector {
           margin-top: 10px;
@@ -97,10 +120,12 @@ class VideoPlayer extends HTMLElement {
       </div>
 
       <div class="quality-selector">
-        <div class="autoplay-toggle">
-          <input type="checkbox" id="autoplay_${vidId}" checked>
-          <label for="autoplay_${vidId}">Auto-play next</label>
-        </div>
+        ${!isGalleryVideo ? `
+          <div class="autoplay-toggle">
+            <input type="checkbox" id="autoplay_${vidId}" checked>
+            <label for="autoplay_${vidId}">Auto-play next</label>
+          </div>
+        ` : ''}
         <select id="quality_select_${vidId}">
           ${resolutions.map(res => 
             `<option value="${res}">${res}p</option>`
@@ -158,7 +183,10 @@ class VideoPlayer extends HTMLElement {
 
   onVideoEnded() {
     // -> onVideoEnded
-    if (!this.autoplay.checked) return;
+    // Skip autoplay for gallery videos
+    if (this.classList.contains('gallery-video')) return;
+    
+    if (!this.autoplay?.checked) return;
     
     // Store current state
     const wasFullscreen = !!document.fullscreenElement;

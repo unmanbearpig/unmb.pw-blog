@@ -183,29 +183,30 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Ensure video players are properly sized
         function adjustVideoPlayerSize() {
-            const videoPlayers = document.querySelectorAll('video-player');
-            if (videoPlayers.length) {
-                // Apply fullwidth class to each video player
-                videoPlayers.forEach(player => {
-                    player.classList.add('fullwidth-video');
+            console.log('-> adjust_video_player_size')
+            const vplayers = document.querySelectorAll('video-player');
+            if (vplayers.length) {
+                // Apply fullwidth class only if not gallery-video
+                vplayers.forEach(player => {
+                    if (!player.classList.contains('gallery-video')) {
+                        player.classList.add('fullwidth-video');
+                    }
                     
                     // Find quality selectors and ensure they have proper styling
-                    const selectors = player.querySelectorAll('.video-quality-selector, select, .quality-selector');
-                    selectors.forEach(selector => {
-                        selector.classList.add('contained-width');
-                    });
+                    const sels = player.querySelectorAll(
+                        '.video-quality-selector, select, .quality-selector'
+                    );
+                    sels.forEach(sel => sel.classList.add('contained-width'));
                 });
                 
                 // Also look for standalone quality selectors
-                const qualitySelectors = document.querySelectorAll('.video-quality-selector, .quality-selector');
-                qualitySelectors.forEach(selector => {
-                    selector.classList.add('contained-width');
-                });
+                const qualSels = document.querySelectorAll(
+                    '.video-quality-selector, .quality-selector'
+                );
+                qualSels.forEach(sel => sel.classList.add('contained-width'));
                 
                 // Force recalculation of video player sizes
-                setTimeout(() => {
-                    window.dispatchEvent(new Event('resize'));
-                }, 100);
+                setTimeout(() => window.dispatchEvent(new Event('resize')), 100);
             }
         }
         
