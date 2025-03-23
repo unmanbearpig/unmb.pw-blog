@@ -34,57 +34,6 @@
 
     {%- include footer.html -%}
 
-    <!-- Simple scroll detection script -->
-    <script>
-      // -> init_travel_scroll Smaller standalone scroll detection
-      document.addEventListener("DOMContentLoaded", function() {
-        function updateScrollState() {
-          const scrollPos = window.scrollY;
-          const viewportHeight = window.innerHeight;
-          const scrollPercentage = (scrollPos / viewportHeight) * 100;
-          
-          if (scrollPercentage > 10) {
-            document.body.classList.add('scrolled');
-            if (scrollPercentage > 20) {
-              document.body.classList.add('header-hidden');
-            } else {
-              document.body.classList.remove('header-hidden');
-            }
-          } else {
-            document.body.classList.remove('scrolled');
-            document.body.classList.remove('header-hidden');
-          }
-        }
-        
-        // Initial check
-        updateScrollState();
-        
-        // Throttled scroll handler
-        let scrollTimeout;
-        let lastScrollPos = 0;
-        
-        window.addEventListener('scroll', function() {
-          // Show header immediately when scrolling up
-          const currentScrollPos = window.scrollY;
-          if (currentScrollPos < lastScrollPos) {
-            document.body.classList.remove('header-hidden');
-          }
-          lastScrollPos = currentScrollPos;
-          
-          // Throttle main updates
-          if (!scrollTimeout) {
-            scrollTimeout = setTimeout(function() {
-              updateScrollState();
-              scrollTimeout = null;
-            }, 100);
-          }
-        });
-        
-        // Handle resize
-        window.addEventListener('resize', updateScrollState);
-      });
-    </script>
-
   </body>
 
 </html>

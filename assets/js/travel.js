@@ -176,10 +176,84 @@ function initRandomCycles() {
     });
 }
 
+// Handle scroll detection
+function initScrollDetection() {
+    function updateScrollState() {
+        const scrollPos = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const scrollPercentage = (scrollPos / viewportHeight) * 100;
+        
+        if (scrollPercentage > 10) {
+            document.body.classList.add('scrolled');
+            if (scrollPercentage > 20) {
+                // Hide header logic is now handled in scroll event listener
+                // This just handles initial state
+                if (document.body.classList.contains('header-hidden')) {
+                    document.body.classList.add('header-hidden');
+                }
+            } else {
+                document.body.classList.remove('header-hidden');
+            }
+        } else {
+            document.body.classList.remove('scrolled');
+            document.body.classList.remove('header-hidden');
+        }
+    }
+    
+    // Initial check
+    updateScrollState();
+    
+    // Throttled scroll handler
+    let scrollTimeout;
+    let lastScrollPos = 0;
+    const SCROLL_THRESHOLD_SHOW = 50; // Minimum pixels scrolled up to show header
+    const SCROLL_THRESHOLD_HIDE = 20; // Minimum pixels scrolled down to hide header
+    
+    window.addEventListener('scroll', function() {
+        const currentScrollPos = window.scrollY;
+        
+        // Show header immediately when at the very top
+        if (currentScrollPos === 0) {
+            document.body.classList.remove('header-hidden');
+            document.body.classList.remove('scrolled');
+        }
+        // Show header when scrolling up significantly
+        else if (currentScrollPos < lastScrollPos) {
+            const scrollDifference = lastScrollPos - currentScrollPos;
+            if (scrollDifference >= SCROLL_THRESHOLD_SHOW) {
+                document.body.classList.remove('header-hidden');
+            }
+        }
+        // Hide header when scrolling down significantly
+        else if (currentScrollPos > lastScrollPos) {
+            const scrollDifference = currentScrollPos - lastScrollPos;
+            if (scrollDifference >= SCROLL_THRESHOLD_HIDE) {
+                document.body.classList.add('header-hidden');
+            }
+        }
+        
+        lastScrollPos = currentScrollPos;
+        
+        // Throttle main updates
+        if (!scrollTimeout) {
+            scrollTimeout = setTimeout(function() {
+                updateScrollState();
+                scrollTimeout = null;
+            }, 100);
+        }
+    });
+    
+    // Handle resize
+    window.addEventListener('resize', updateScrollState);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     // Check if we're on a travel page
     if (document.body.classList.contains('travel-page')) {
         console.log("Travel page initialized");
+        
+        // Initialize scroll detection
+        initScrollDetection();
         
         // Ensure video players are properly sized
         function adjustVideoPlayerSize() {
