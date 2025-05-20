@@ -14,8 +14,10 @@ import json
 import subprocess
 from PIL import Image
 import logging
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Tuple
 import textwrap
+import tempfile
+import shutil
 
 # Set up logging
 logging.basicConfig(
@@ -83,8 +85,8 @@ def get_b2_file_info(bucket, file_name: str) -> Optional[b2.FileVersion]:
     except FileNotPresent:
         return None
 
-def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: str, destination_folder: str) -> str:
-    """Upload a file to B2 and return the public URL"""
+def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: str, destination_folder: str) -> Dict[str, str]:
+    """Upload a file to B2 and return the public URLs for all resolutions"""
     # Initialize B2 client
     info = b2.InMemoryAccountInfo()
     b2_api = b2.B2Api(info)
@@ -93,36 +95,39 @@ def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: 
     # Get bucket
     bucket = b2_api.get_bucket_by_name(bucket_name)
     
-    # Prepare file info
-    file_name = os.path.basename(local_path)
-    safe_name = sanitize_filename(file_name)
-    destination_path = f"{destination_folder}/{safe_name}"
+    # Create a temporary directory for processed images
+    with tempfile.TemporaryDirectory() as temp_dir:
+        # Process image for responsive loading
+        processed_images = process_image_for_responsive_loading(local_path, temp_dir)
+        
+        # Upload all versions and collect URLs
+        urls = {}
+        for size, formats in processed_images.items():
+            urls[size] = {}
+            for format_type, format_path in formats.items():
+                # Prepare file info
+                file_name = os.path.basename(format_path)
+                safe_name = sanitize_filename(file_name)
+                destination_path = f"{destination_folder}/{safe_name}"
+                
+                # Calculate local file hash
+                local_hash = calculate_file_hash(format_path)
+                
+                # Check if file exists in B2
+                existing_file = get_b2_file_info(bucket, destination_path)
+                
+                if existing_file and existing_file.content_sha1 == local_hash:
+                    logger.info(f"File {file_name} already exists in B2 with matching hash, skipping upload")
+                    urls[size][format_type] = f"https://f005.backblazeb2.com/file/{bucket_name}/{destination_path}"
+                else:
+                    # Upload the file
+                    uploaded_file = bucket.upload_local_file(
+                        local_file=format_path,
+                        file_name=destination_path
+                    )
+                    urls[size][format_type] = f"https://f005.backblazeb2.com/file/{bucket_name}/{destination_path}"
     
-    # Calculate local file hash
-    local_hash = calculate_file_hash(local_path)
-    
-    # Check if file exists in B2
-    existing_file = get_b2_file_info(bucket, destination_path)
-    
-    if existing_file:
-        # Compare hashes
-        if existing_file.content_sha1 == local_hash:
-            logger.info(f"File {file_name} already exists in B2 with matching hash, skipping upload")
-            return f"https://f005.backblazeb2.com/file/{bucket_name}/{destination_path}"
-        else:
-            logger.info(f"File {file_name} exists in B2 but hash differs, uploading new version")
-    else:
-        logger.info(f"File {file_name} not found in B2, uploading")
-    
-    # Upload the file
-    uploaded_file = bucket.upload_local_file(
-        local_file=local_path,
-        file_name=destination_path
-    )
-    
-    # Get the public URL
-    public_url = f"https://f005.backblazeb2.com/file/{bucket_name}/{destination_path}"
-    return public_url
+    return urls
 
 def generate_markdown(title: str, date: datetime, photos: List[Dict], output_file: str) -> None:
     """Generate a markdown file with the photos in the correct layout"""
@@ -144,9 +149,26 @@ permalink: /travel/{date.strftime('%Y-%m-%d')}-{title.lower().replace(' ', '-')}
     if photos:
         first_photo = photos[0]
         width, height = get_image_dimensions(first_photo['path'])
+        
+        # Generate srcset for WebP and JPEG
+        webp_srcset = []
+        jpeg_srcset = []
+        for size, urls in first_photo['urls'].items():
+            width_value = int(size.replace('w', ''))
+            webp_srcset.append(f"{urls['webp']} {width_value}w")
+            jpeg_srcset.append(f"{urls['jpeg']} {width_value}w")
+        
         gallery_sections.append(f"""<div class="gallery">
     <div class="gallery-item full">
-        <img src="{first_photo['url']}" alt="{title}" width="{width}" height="{height}">
+        <picture>
+            <source type="image/webp" srcset="{', '.join(webp_srcset)}">
+            <img src="{first_photo['urls']['1000w']['jpeg']}" 
+                 srcset="{', '.join(jpeg_srcset)}"
+                 alt="{title}" 
+                 width="{width}" 
+                 height="{height}"
+                 loading="eager">
+        </picture>
     </div>
 </div>""")
     
@@ -160,8 +182,25 @@ permalink: /travel/{date.strftime('%Y-%m-%d')}-{title.lower().replace(' ', '-')}
             grid_html = ['<div class="gallery grid-3x3">']
             for photo in grid_photos:
                 width, height = get_image_dimensions(photo['path'])
+                
+                # Generate srcset for WebP and JPEG
+                webp_srcset = []
+                jpeg_srcset = []
+                for size, urls in photo['urls'].items():
+                    width_value = int(size.replace('w', ''))
+                    webp_srcset.append(f"{urls['webp']} {width_value}w")
+                    jpeg_srcset.append(f"{urls['jpeg']} {width_value}w")
+                
                 grid_html.append(f"""    <div class="gallery-item">
-        <img src="{photo['url']}" alt="{title}" width="{width}" height="{height}">
+        <picture>
+            <source type="image/webp" srcset="{', '.join(webp_srcset)}">
+            <img src="{photo['urls']['1000w']['jpeg']}" 
+                 srcset="{', '.join(jpeg_srcset)}"
+                 alt="{title}" 
+                 width="{width}" 
+                 height="{height}"
+                 loading="lazy">
+        </picture>
     </div>""")
             grid_html.append('</div>')
             gallery_sections.append('\n'.join(grid_html))
@@ -220,6 +259,61 @@ def parse_args():
     
     return parser.parse_args()
 
+def process_image_for_responsive_loading(image_path: str, output_dir: str) -> Dict[str, str]:
+    """
+    Process an image to create multiple resolutions and WebP versions.
+    Returns a dictionary of image URLs for different sizes.
+    """
+    with Image.open(image_path) as img:
+        # Get original dimensions
+        original_width, original_height = img.size
+        
+        # Define target widths for different screen sizes
+        # We'll create versions that are 1x, 0.75x, and 0.5x of the original width
+        # but only if the original is significantly larger
+        target_widths = []
+        if original_width > 2000:
+            target_widths = [2000, 1500, 1000]
+        elif original_width > 1500:
+            target_widths = [1500, 1000]
+        elif original_width > 1000:
+            target_widths = [1000]
+        
+        # Always keep the original
+        target_widths.append(original_width)
+        
+        # Remove duplicates and sort
+        target_widths = sorted(list(set(target_widths)))
+        
+        # Create output directory if it doesn't exist
+        os.makedirs(output_dir, exist_ok=True)
+        
+        # Process each target width
+        image_urls = {}
+        for width in target_widths:
+            # Calculate new height maintaining aspect ratio
+            ratio = width / original_width
+            height = int(original_height * ratio)
+            
+            # Resize image
+            resized = img.resize((width, height), Image.Resampling.LANCZOS)
+            
+            # Save as WebP with high quality
+            webp_path = os.path.join(output_dir, f"{width}w.webp")
+            resized.save(webp_path, "WEBP", quality=90, method=6)
+            
+            # Save as JPEG with high quality
+            jpeg_path = os.path.join(output_dir, f"{width}w.jpg")
+            resized.save(jpeg_path, "JPEG", quality=95, optimize=True)
+            
+            # Store paths
+            image_urls[f"{width}w"] = {
+                "webp": webp_path,
+                "jpeg": jpeg_path
+            }
+        
+        return image_urls
+
 def main():
     args = parse_args()
     
@@ -266,14 +360,19 @@ def main():
             
             if args.dry_run:
                 logger.info(f"Would process {file}")
+                # Create dummy URLs for dry run
+                dummy_urls = {
+                    '1000w': {'webp': f"https://example.com/{file}.webp", 'jpeg': f"https://example.com/{file}.jpg"},
+                    '2000w': {'webp': f"https://example.com/{file}.webp", 'jpeg': f"https://example.com/{file}.jpg"}
+                }
                 photos.append({
-                    'url': f"https://example.com/{file}",  # Placeholder URL
+                    'urls': dummy_urls,
                     'path': local_path
                 })
             else:
                 # Upload to B2
                 logger.info(f"Processing {file}...")
-                url = upload_to_b2(
+                urls = upload_to_b2(
                     local_path,
                     credentials['bucket'],
                     credentials['key_id'],
@@ -282,7 +381,7 @@ def main():
                 )
                 
                 photos.append({
-                    'url': url,
+                    'urls': urls,
                     'path': local_path
                 })
     
