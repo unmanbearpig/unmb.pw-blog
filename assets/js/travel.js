@@ -49,19 +49,19 @@ function initFullscreenGallery() {
     let currIdx = 0;
     let galleryItems = [];
     
-    // Handle gallery item clicks - modified to exclude full and random-cycle items
+    // Collect all gallery items from the page first
     document.querySelectorAll('.gallery').forEach(gallery => {
         // Skip random-cycle galleries
         if (gallery.classList.contains('random-cycle')) return;
         
         const items = gallery.querySelectorAll('.gallery-item');
-        items.forEach((item, idx) => {
+        items.forEach(item => {
             // Skip full-width items
             if (item.classList.contains('full')) return;
             
             item.addEventListener('click', () => {
-                // Only include non-full items in navigation
-                galleryItems = Array.from(items).filter(i => !i.classList.contains('full'));
+                // Get all gallery items from the page
+                galleryItems = Array.from(document.querySelectorAll('.gallery:not(.random-cycle) .gallery-item:not(.full)'));
                 currIdx = galleryItems.indexOf(item);
                 showFullscreen(item);
             });
