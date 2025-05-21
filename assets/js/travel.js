@@ -72,10 +72,24 @@ function initFullscreenGallery() {
         const content = item.querySelector('img, video-player');
         if (!content) return;
         
-        const fullContent = content.cloneNode(true);
         const fsContent = overlay.querySelector('.fullscreen-content');
         fsContent.innerHTML = '';
-        fsContent.appendChild(fullContent);
+        
+        if (content.tagName === 'IMG') {
+            // Create a new image element for fullscreen
+            const fullImg = document.createElement('img');
+            fullImg.src = content.src;
+            fullImg.alt = '';  // Explicitly set empty alt text
+            fullImg.style.maxWidth = '95vw';
+            fullImg.style.maxHeight = '95vh';
+            fullImg.style.objectFit = 'contain';
+            fsContent.appendChild(fullImg);
+        } else {
+            // For video players, we can still clone
+            const fullContent = content.cloneNode(true);
+            fsContent.appendChild(fullContent);
+        }
+        
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
     }

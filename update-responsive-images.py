@@ -243,10 +243,14 @@ def update_markdown_file(file_path: str, credentials: Dict[str, str], max_concur
                 result = future.result()
                 if result:
                     url, new_html, urls = result
-                    # Replace old image tag with new responsive version
+                    # Replace old image tag with new responsive version using regex
+                    # Match both <img src="url"> and ![alt](url) patterns
+                    img_pattern = f'<img[^>]+src="{url}"[^>]*>'
+                    markdown_pattern = f'!\\[[^\\]]*\\]\\({url}\\)'
+                    
                     old_content = content
-                    content = content.replace(f'<img src="{url}"', new_html)
-                    content = content.replace(f'![{Path(file_path).stem}]({url})', new_html)
+                    content = re.sub(img_pattern, new_html, content)
+                    content = re.sub(markdown_pattern, new_html, content)
                     
                     if old_content == content:
                         logger.warning(f"Failed to replace image URL: {url}")

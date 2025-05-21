@@ -348,7 +348,7 @@ body.travel-page {
 }
 
 /* Make sure images are properly styled for dark theme */
-.travel-page img {
+.travel-page img:not(.fullscreen-content img) {
     max-width: 100%;
     height: auto;
     display: block;
@@ -912,4 +912,21 @@ body.travel-page {
 .gallery-video:hover .quality-selector,
 .gallery-video:hover .autoplay-toggle {
     opacity: 1;
+}
+
+.fullscreen-content img::after {
+    content: none !important;
+    display: none !important;
+}
+
+.fullscreen-content img {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    position: relative;
+}
+
+.fullscreen-content img::before {
+    content: none !important;
+    display: none !important;
 }
