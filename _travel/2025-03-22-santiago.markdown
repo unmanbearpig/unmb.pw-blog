@@ -8,145 +8,330 @@ permalink: /travel/2025-03-22-santiago.html
 
 <div class="gallery">
     <div class="gallery-item full">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240529_002428.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240529_002428_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240529_002428_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240529_002428_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240529_002428_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240529_002428_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <!-- Early Days -->
 <div class="gallery grid-3x3">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240524_164850.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_164850_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_164850_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_164850_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_164850_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_164850_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240527_175302.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240527_175302_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240527_175302_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240527_175302_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240527_175302_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240527_175302_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item full">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240524_161042.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161042_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161042_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161042_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161042_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161042_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <div class="gallery grid-3x3">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240515_172922.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_172922_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_172922_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_172922_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_172922_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_172922_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240515_180756.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_180756_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_180756_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_180756_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_180756_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240515_180756_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240519_175831.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240519_175831_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240519_175831_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240519_175831_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240519_175831_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240519_175831_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240523_162059.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240523_162059_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240523_162059_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240523_162059_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240523_162059_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240523_162059_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240524_153133.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_153133_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_153133_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_153133_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_153133_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_153133_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240524_160946.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_160946_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_160946_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_160946_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_160946_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_160946_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <!-- Side by Side Photos -->
 <div class="gallery side-by-side">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240524_161341.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161341_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161341_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161341_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161341_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_161341_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240524_163115.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_163115_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_163115_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_163115_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_163115_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240524_163115_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <!-- More Photos Grid -->
 <div class="gallery grid-2x2">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240525_023703.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023703_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023703_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023703_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023703_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023703_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240525_023936.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023936_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023936_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023936_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023936_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_023936_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240525_165350.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_165350_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_165350_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_165350_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_165350_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_165350_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240525_170038.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_170038_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_170038_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_170038_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_170038_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240525_170038_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 
 <div class="gallery random-cycle">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_150318.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150318_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150318_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150318_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150318_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150318_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_150346.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150346_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150346_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150346_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150346_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_150346_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_151725.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_151725_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_151725_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_151725_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_151725_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_151725_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <!-- June Photos -->
 <div class="gallery grid-3x3">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_142829.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_142829_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_142829_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_142829_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_142829_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_142829_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_152246.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_152246_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_152246_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_152246_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_152246_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_152246_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_162330.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162330_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162330_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162330_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162330_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162330_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <div class="gallery grid-3x3">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_181820.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181820_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181820_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181820_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181820_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181820_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_181213_flip.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_181213_flip_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_181213_flip_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_181213_flip_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_181213_flip_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_181213_flip_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_191943.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_191943_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_191943_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_191943_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_191943_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_191943_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240510_212103.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240510_212103_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240510_212103_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240510_212103_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240510_212103_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240510_212103_3920w.jpeg 3920w"
+         alt="2025-03-22-santiago" 
+         width="3920" 
+         height="2940"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_180234.jpg" alt="Santiago at night">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_180234_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_180234_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_180234_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_180234_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_180234_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago at night">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_181757.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181757_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181757_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181757_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181757_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181757_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240526_182814.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240526_182814_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240526_182814_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240526_182814_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240526_182814_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240526_182814_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_181023.jpg" alt="Santiago at night">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181023_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181023_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181023_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181023_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181023_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago at night">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_181033.jpg" alt="Santiago at night">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181033_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181033_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181033_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181033_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_181033_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago at night">
     </div>
 </div>
 
 <!-- More June Photos -->
 <div class="gallery grid-3x3">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_162654.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162654_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162654_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162654_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162654_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_162654_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_170354.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_170354_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_170354_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_170354_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_170354_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_170354_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_172239_flip.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_172239_flip_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_172239_flip_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_172239_flip_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_172239_flip_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_172239_flip_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240602_204545.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_204545_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_204545_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_204545_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_204545_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240602_204545_3967w.jpeg 3967w"
+         alt="2025-03-22-santiago" 
+         width="3967" 
+         height="2975"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240603_101321.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240603_101321_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240603_101321_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240603_101321_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240603_101321_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240603_101321_9001w.jpeg 9001w"
+         alt="2025-03-22-santiago" 
+         width="9001" 
+         height="6751"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240528_153319(0).jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_153319_0__1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_153319_0__1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_153319_0__1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_153319_0__2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240528_153319_0__4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
@@ -169,37 +354,82 @@ permalink: /travel/2025-03-22-santiago.html
 
 <div class="gallery random-cycle">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174410.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174410_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174410_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174410_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174410_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174410_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174413.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174413_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174413_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174413_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174413_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174413_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174414.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174414_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174414_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174414_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174414_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174414_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174548.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174548_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174548_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174548_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174548_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174548_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174552.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174552_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174552_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174552_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174552_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174552_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240612_174713.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174713_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174713_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174713_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174713_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240612_174713_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <div class="gallery">
     <div class="gallery-item full">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_222608.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_222608_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_222608_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_222608_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_222608_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_222608_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <div class="gallery side-by-side">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_172003.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_172003_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_172003_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_172003_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_172003_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_172003_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_152130.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_152130_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_152130_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_152130_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_152130_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_152130_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
@@ -223,19 +453,39 @@ permalink: /travel/2025-03-22-santiago.html
 
 <div class="gallery side-by-side">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240803_171841.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_171841_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_171841_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_171841_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_171841_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240803_171841_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240905_180933_flip.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240905_180933_flip_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240905_180933_flip_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240905_180933_flip_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240905_180933_flip_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240905_180933_flip_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
 <div class="gallery side-by-side">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240910_192345.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_192345_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_192345_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_192345_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_192345_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_192345_4032w.jpeg 4032w"
+         alt="2025-03-22-santiago" 
+         width="4032" 
+         height="3024"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240916_131509.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240916_131509_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240916_131509_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240916_131509_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240916_131509_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240916_131509_3506w.jpeg 3506w"
+         alt="2025-03-22-santiago" 
+         width="3506" 
+         height="2630"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
@@ -258,10 +508,20 @@ permalink: /travel/2025-03-22-santiago.html
 
 <div class="gallery side-by-side">
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240910_194031.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194031_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194031_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194031_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194031_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194031_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
     <div class="gallery-item">
-        <img src="https://f005.backblazeb2.com/file/motovids/photos/santiago/20240910_194517.jpg" alt="Santiago">
+        <img src="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194517_1000w.jpeg" 
+         srcset="https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194517_1000w.jpeg 1000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194517_1500w.jpeg 1500w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194517_2000w.jpeg 2000w, https://f005.backblazeb2.com/file/motovids/photos/2025-03-22-santiago/20240910_194517_9248w.jpeg 9248w"
+         alt="2025-03-22-santiago" 
+         width="9248" 
+         height="6936"
+         loading="lazy"> alt="Santiago">
     </div>
 </div>
 
