@@ -88,6 +88,61 @@ def get_b2_file_info(bucket, file_name: str) -> Optional[b2.FileVersion]:
     except FileNotPresent:
         return None
 
+def check_existing_images_in_b2(bucket, original_filename: str, destination_folder: str, local_path: str) -> Dict[str, Dict]:
+    """Check which image sizes already exist in B2 and return their URLs"""
+    existing_urls = {}
+    
+    # Calculate original image dimensions to determine what sizes would be generated
+    try:
+        with Image.open(local_path) as img:
+            img = ImageOps.exif_transpose(img)
+            original_width, original_height = img.size
+            
+            # Define target widths (same logic as process_image_for_responsive_loading)
+            target_widths = []
+            if original_width > 2000:
+                target_widths = [2000, 1500, 1000]
+            elif original_width > 1500:
+                target_widths = [1500, 1000]
+            elif original_width > 1000:
+                target_widths = [1000]
+            
+            target_widths.append(original_width)
+            target_widths = sorted(list(set(target_widths)))
+            
+            # Check if ALL sizes exist in B2
+            all_sizes_exist = True
+            for width in target_widths:
+                size_key = f"{width}w"
+                webp_name = f"{original_filename}_{width}w.webp"
+                jpeg_name = f"{original_filename}_{width}w.jpeg"
+                
+                webp_path = f"{destination_folder}/{sanitize_filename(webp_name)}"
+                jpeg_path = f"{destination_folder}/{sanitize_filename(jpeg_name)}"
+                
+                webp_exists = get_b2_file_info(bucket, webp_path)
+                jpeg_exists = get_b2_file_info(bucket, jpeg_path)
+                
+                if webp_exists and jpeg_exists:
+                    existing_urls[size_key] = {
+                        'webp': f"https://f005.backblazeb2.com/file/{bucket.name}/{webp_path}",
+                        'jpeg': f"https://f005.backblazeb2.com/file/{bucket.name}/{jpeg_path}"
+                    }
+                else:
+                    all_sizes_exist = False
+            
+            # Only return URLs if ALL expected sizes exist
+            if not all_sizes_exist:
+                logger.debug(f"Not all sizes exist for {os.path.basename(local_path)}, will need to process")
+                return {}
+            else:
+                logger.debug(f"All {len(existing_urls)} sizes exist for {os.path.basename(local_path)}")
+                
+    except Exception as e:
+        logger.warning(f"Error checking existing images for {local_path}: {e}")
+    
+    return existing_urls
+
 def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: str, destination_folder: str, force_reupload: bool = False) -> Dict[str, str]:
     """Upload a file to B2 and return the public URLs for all resolutions"""
     # Initialize B2 client
@@ -98,11 +153,18 @@ def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: 
     # Get bucket
     bucket = b2_api.get_bucket_by_name(bucket_name)
     
+    # Get the original filename without extension
+    original_filename = os.path.splitext(os.path.basename(local_path))[0]
+    
+    # Check if images already exist in B2 (unless force_reupload is True)
+    if not force_reupload:
+        existing_urls = check_existing_images_in_b2(bucket, original_filename, destination_folder, local_path)
+        if existing_urls:
+            logger.info(f"Found {len(existing_urls)} existing image sizes for {os.path.basename(local_path)}, skipping resize and upload")
+            return existing_urls
+    
     # Create a temporary directory for processed images
     with tempfile.TemporaryDirectory() as temp_dir:
-        # Get the original filename without extension
-        original_filename = os.path.splitext(os.path.basename(local_path))[0]
-        
         # Process image for responsive loading
         processed_images = process_image_for_responsive_loading(local_path, temp_dir)
         
@@ -497,29 +559,57 @@ def main():
                     'path': file
                 })
         else:
-            # Process all images in parallel
-            logger.info(f"Starting parallel processing of {len(image_files)} images...")
-            processed_results = process_images_parallel(image_files, temp_dir)
+            # Check for existing images first to avoid unnecessary processing
+            logger.info("Checking for existing images in B2...")
             
-            # Upload to B2 and collect results
-            logger.info("Starting B2 uploads...")
-            for file, urls in zip(image_files, processed_results):
-                if urls:  # Only process if we have valid URLs
-                    logger.info(f"Uploading {os.path.basename(file)} to B2...")
-                    uploaded_urls = upload_to_b2(
-                        file,
-                        credentials['bucket'],
-                        credentials['key_id'],
-                        credentials['app_key'],
-                        f"photos/{title.lower().replace(' ', '_')}",
-                        args.force_reupload
-                    )
-                    
-                    photos.append({
-                        'urls': uploaded_urls,
-                        'path': file
-                    })
-                    logger.info(f"Completed upload for {os.path.basename(file)}")
+            # Initialize B2 client for checking
+            info = b2.InMemoryAccountInfo()
+            b2_api = b2.B2Api(info)
+            b2_api.authorize_account("production", credentials['key_id'], credentials['app_key'])
+            bucket = b2_api.get_bucket_by_name(credentials['bucket'])
+            
+            files_to_process = []
+            for file in image_files:
+                original_filename = os.path.splitext(os.path.basename(file))[0]
+                destination_folder = f"photos/{title.lower().replace(' ', '_')}"
+                
+                if not args.force_reupload:
+                    existing_urls = check_existing_images_in_b2(bucket, original_filename, destination_folder, file)
+                    if existing_urls:
+                        logger.info(f"All sizes already exist for {os.path.basename(file)}, skipping processing")
+                        photos.append({
+                            'urls': existing_urls,
+                            'path': file
+                        })
+                        continue
+                
+                files_to_process.append(file)
+            
+            if files_to_process:
+                logger.info(f"Processing {len(files_to_process)} new images...")
+                processed_results = process_images_parallel(files_to_process, temp_dir)
+                
+                # Upload to B2 and collect results
+                logger.info("Starting B2 uploads...")
+                for file, urls in zip(files_to_process, processed_results):
+                    if urls:  # Only process if we have valid URLs
+                        logger.info(f"Uploading {os.path.basename(file)} to B2...")
+                        uploaded_urls = upload_to_b2(
+                            file,
+                            credentials['bucket'],
+                            credentials['key_id'],
+                            credentials['app_key'],
+                            f"photos/{title.lower().replace(' ', '_')}",
+                            args.force_reupload
+                        )
+                        
+                        photos.append({
+                            'urls': uploaded_urls,
+                            'path': file
+                        })
+                        logger.info(f"Completed upload for {os.path.basename(file)}")
+            else:
+                logger.info("All images already exist in B2, no processing needed")
     
     if not photos:
         logger.error(f"No images were successfully processed")
