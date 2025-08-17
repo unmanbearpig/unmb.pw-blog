@@ -261,6 +261,24 @@ function initScrollDetection() {
     window.addEventListener('resize', updateScrollState);
 }
 
+// Add titles to images that have alt text
+function initImageTitles() {
+    document.querySelectorAll('img[alt]:not([alt=""])').forEach(img => {
+        if (!img.title) {
+            img.title = img.alt;
+        }
+    });
+}
+
+// Initialize all travel page features
+function initTravel() {
+    initCarousels();
+    initFullscreenGallery();
+    initRandomCycles();
+    initScrollDetection();
+    initImageTitles();
+}
+
 document.addEventListener("DOMContentLoaded", function() {
     // Check if we're on a travel page
     if (document.body.classList.contains('travel-page')) {
@@ -268,6 +286,9 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Initialize scroll detection
         initScrollDetection();
+        
+        // Initialize image titles
+        initImageTitles();
         
         // Ensure video players are properly sized
         function adjustVideoPlayerSize() {
