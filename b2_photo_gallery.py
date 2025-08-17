@@ -310,8 +310,13 @@ def check_existing_images_in_b2(bucket, original_filename: str, destination_fold
     
     return existing_urls
 
-def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: str, destination_folder: str, force_reupload: bool = False) -> Dict[str, str]:
+def upload_to_b2(local_path: str, bucket_name: str, b2_key_id: str, b2_app_key: str, destination_folder: str, force_reupload: bool = False, cached_urls: Dict[str, str] = None) -> Dict[str, str]:
     """Upload a file to B2 and return the public URLs for all resolutions"""
+    # If we have cached URLs and not forcing reupload, return cached URLs
+    if not force_reupload and cached_urls:
+        logger.info(f"Using cached URLs for {os.path.basename(local_path)}, skipping B2 checks and upload")
+        return cached_urls
+    
     # Initialize B2 client
     info = b2.InMemoryAccountInfo()
     b2_api = b2.B2Api(info)
@@ -804,7 +809,18 @@ def main():
                     logger.debug(f"Using cached metadata for {filename}")
                     image_metadata = cached_image_metadata
                 
-                # Check for existing URLs in B2 (unless force_reupload)
+                # Check if we have cached URLs first (unless force_reupload)
+                cached_urls = image_metadata.get("urls", {})
+                if not args.force_reupload and cached_urls:
+                    logger.info(f"Using cached URLs for {os.path.basename(file)}, skipping B2 checks")
+                    photos.append({
+                        'urls': cached_urls,
+                        'path': file,
+                        'metadata': image_metadata
+                    })
+                    continue
+                
+                # Check for existing URLs in B2 (unless force_reupload or we have cached URLs)
                 if not args.force_reupload:
                     existing_urls = check_existing_images_in_b2(bucket, original_filename, destination_folder, file)
                     if existing_urls:
@@ -831,13 +847,16 @@ def main():
                 for (file, image_metadata), urls in zip(files_to_process, processed_results):
                     if urls:  # Only process if we have valid URLs
                         logger.info(f"Uploading {os.path.basename(file)} to B2...")
+                        # Get cached URLs to pass to upload_to_b2
+                        cached_urls = image_metadata.get("urls", {})
                         uploaded_urls = upload_to_b2(
                             file,
                             credentials['bucket'],
                             credentials['key_id'],
                             credentials['app_key'],
                             f"photos/{title.lower().replace(' ', '_')}",
-                            args.force_reupload
+                            args.force_reupload,
+                            cached_urls
                         )
                         
                         # Update metadata cache with new URLs
