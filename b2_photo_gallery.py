@@ -12,7 +12,7 @@ import re
 import hashlib
 import json
 import subprocess
-from PIL import Image
+from PIL import Image, ImageOps
 import logging
 from typing import List, Dict, Optional, Tuple
 import textwrap
@@ -65,9 +65,10 @@ def calculate_file_hash(file_path: str) -> str:
     return sha1.hexdigest()
 
 def get_image_dimensions(file_path: str) -> tuple:
-    """Get image dimensions using PIL"""
+    """Get image dimensions using PIL, honoring EXIF orientation"""
     try:
         with Image.open(file_path) as img:
+            img = ImageOps.exif_transpose(img)
             return img.size
     except Exception as e:
         logger.warning(f"Could not get dimensions for {file_path}: {e}")
@@ -315,6 +316,8 @@ def process_single_image(args: Tuple[str, str, int]) -> Tuple[str, Dict[str, str
     try:
         logger.info(f"Processing {os.path.basename(image_path)} at width {width}w")
         with Image.open(image_path) as img:
+            # Normalize by EXIF orientation so pixels are upright
+            img = ImageOps.exif_transpose(img)
             # Get original dimensions
             original_width, original_height = img.size
             logger.debug(f"Original dimensions: {original_width}x{original_height}")
@@ -340,7 +343,10 @@ def process_single_image(args: Tuple[str, str, int]) -> Tuple[str, Dict[str, str
             
             # Save as JPEG with high quality
             logger.debug(f"Saving JPEG version: {os.path.basename(jpeg_path)}")
-            resized.save(jpeg_path, "JPEG", quality=95, optimize=True)
+            jpeg_img = resized
+            if jpeg_img.mode in ("RGBA", "P"):
+                jpeg_img = jpeg_img.convert("RGB")
+            jpeg_img.save(jpeg_path, "JPEG", quality=95, optimize=True)
             
             logger.info(f"Completed processing {os.path.basename(image_path)} at width {width}w")
             return f"{width}w", {
@@ -353,12 +359,14 @@ def process_single_image(args: Tuple[str, str, int]) -> Tuple[str, Dict[str, str
 
 def process_image_for_responsive_loading(image_path: str, output_dir: str) -> Dict[str, str]:
     """
-    Process an image to create multiple resolutions and WebP versions using parallel processing.
+    Process an image to create multiple resolutions and WebP versions sequentially.
     Returns a dictionary of image URLs for different sizes.
     """
     try:
         logger.info(f"Starting responsive processing for {os.path.basename(image_path)}")
         with Image.open(image_path) as img:
+            # Normalize by EXIF orientation so width/height reflect display
+            img = ImageOps.exif_transpose(img)
             # Get original dimensions
             original_width, original_height = img.size
             logger.info(f"Image {os.path.basename(image_path)} dimensions: {original_width}x{original_height}")
@@ -382,15 +390,13 @@ def process_image_for_responsive_loading(image_path: str, output_dir: str) -> Di
             # Create output directory if it doesn't exist
             os.makedirs(output_dir, exist_ok=True)
             
-            # Prepare arguments for parallel processing
-            process_args = [(image_path, output_dir, width) for width in target_widths]
+            # Process each size sequentially
+            processed_sizes = {}
+            for width in target_widths:
+                size_key, size_paths = process_single_image((image_path, output_dir, width))
+                if size_paths:
+                    processed_sizes[size_key] = size_paths
             
-            # Use multiprocessing to process images in parallel
-            with multiprocessing.Pool() as pool:
-                results = pool.map(process_single_image, process_args)
-            
-            # Convert results to dictionary and filter out any failed processing
-            processed_sizes = {k: v for k, v in dict(results).items() if v}
             logger.info(f"Successfully processed {len(processed_sizes)} sizes for {os.path.basename(image_path)}")
             return processed_sizes
     except Exception as e:

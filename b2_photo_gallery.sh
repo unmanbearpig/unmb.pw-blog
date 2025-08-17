@@ -21,6 +21,7 @@ show_help() {
     echo "  -d, --date YYYY-MM-DD     Custom date for the post (defaults to today)"
     echo "  -o, --output PATH         Custom output markdown file path"
     echo "  --dry-run                 Show what would be done without making changes"
+    echo "  --force-reupload          Force reupload even if files exist in B2"
     echo
     echo "Examples:"
     echo "  ./b2_photo_gallery.sh /path/to/photos"
@@ -59,6 +60,10 @@ while [[ $# -gt 0 ]]; do
             ;;
         --dry-run)
             DRY_RUN="--dry-run"
+            shift
+            ;;
+        --force-reupload)
+            FORCE_REUPLOAD="--force-reupload"
             shift
             ;;
         *)
@@ -113,6 +118,7 @@ CMD_ARGS=("$PHOTO_DIR")
 [ ! -z "$DATE" ] && CMD_ARGS+=("--date" "$DATE")
 [ ! -z "$OUTPUT" ] && CMD_ARGS+=("--output" "$OUTPUT")
 [ ! -z "$DRY_RUN" ] && CMD_ARGS+=("$DRY_RUN")
+[ ! -z "$FORCE_REUPLOAD" ] && CMD_ARGS+=("$FORCE_REUPLOAD")
 
 # Run the Python script with all arguments
 python3 "$SCRIPT_DIR/b2_photo_gallery.py" "${CMD_ARGS[@]}" 
