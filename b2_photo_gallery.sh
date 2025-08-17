@@ -22,11 +22,15 @@ show_help() {
     echo "  -o, --output PATH         Custom output markdown file path"
     echo "  --dry-run                 Show what would be done without making changes"
     echo "  --force-reupload          Force reupload even if files exist in B2"
+    echo "  --layout-strategy STRATEGY Layout strategy (smart)"
+    echo "  --list-strategies         List all available layout strategies and exit"
     echo
     echo "Examples:"
     echo "  ./b2_photo_gallery.sh /path/to/photos"
     echo "  ./b2_photo_gallery.sh -t \"My Gallery\" -d 2024-03-20 /path/to/photos"
     echo "  ./b2_photo_gallery.sh --dry-run /path/to/photos"
+    echo "  ./b2_photo_gallery.sh --layout-strategy smart /path/to/photos"
+    echo "  ./b2_photo_gallery.sh --list-strategies"
     echo
     echo "Environment:"
     echo "  The script will automatically:"
@@ -66,6 +70,14 @@ while [[ $# -gt 0 ]]; do
             FORCE_REUPLOAD="--force-reupload"
             shift
             ;;
+        --layout-strategy)
+            LAYOUT_STRATEGY="$2"
+            shift 2
+            ;;
+        --list-strategies)
+            LIST_STRATEGIES="--list-strategies"
+            shift
+            ;;
         *)
             PHOTO_DIR="$1"
             shift
@@ -73,8 +85,8 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Check if photo directory is provided
-if [ -z "$PHOTO_DIR" ]; then
+# Check if photo directory is provided (unless listing strategies)
+if [ -z "$PHOTO_DIR" ] && [ -z "$LIST_STRATEGIES" ]; then
     echo "Error: Photo directory is required"
     echo "Use --help for usage information"
     exit 1
@@ -113,12 +125,22 @@ if ! b2 account get >/dev/null 2>&1; then
 fi
 
 # Build command arguments
-CMD_ARGS=("$PHOTO_DIR")
-[ ! -z "$TITLE" ] && CMD_ARGS+=("--title" "$TITLE")
-[ ! -z "$DATE" ] && CMD_ARGS+=("--date" "$DATE")
-[ ! -z "$OUTPUT" ] && CMD_ARGS+=("--output" "$OUTPUT")
-[ ! -z "$DRY_RUN" ] && CMD_ARGS+=("$DRY_RUN")
-[ ! -z "$FORCE_REUPLOAD" ] && CMD_ARGS+=("$FORCE_REUPLOAD")
+CMD_ARGS=()
+
+# Handle list strategies (no photo dir needed)
+if [ ! -z "$LIST_STRATEGIES" ]; then
+    CMD_ARGS+=("$LIST_STRATEGIES")
+else
+    # Normal operation requires photo directory
+    CMD_ARGS+=("$PHOTO_DIR")
+    [ ! -z "$TITLE" ] && CMD_ARGS+=("--title" "$TITLE")
+    [ ! -z "$DATE" ] && CMD_ARGS+=("--date" "$DATE")
+    [ ! -z "$OUTPUT" ] && CMD_ARGS+=("--output" "$OUTPUT")
+    [ ! -z "$DRY_RUN" ] && CMD_ARGS+=("$DRY_RUN")
+    [ ! -z "$FORCE_REUPLOAD" ] && CMD_ARGS+=("$FORCE_REUPLOAD")
+fi
+
+[ ! -z "$LAYOUT_STRATEGY" ] && CMD_ARGS+=("--layout-strategy" "$LAYOUT_STRATEGY")
 
 # Run the Python script with all arguments
 python3 "$SCRIPT_DIR/b2_photo_gallery.py" "${CMD_ARGS[@]}" 

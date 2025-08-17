@@ -13,13 +13,15 @@ import hashlib
 import json
 import subprocess
 from PIL import Image, ImageOps
+from PIL.ExifTags import TAGS, GPSTAGS
 import logging
-from typing import List, Dict, Optional, Tuple
+from typing import List, Dict, Optional, Tuple, Any
 import textwrap
 import tempfile
 import shutil
 import multiprocessing
 from functools import partial
+from layout_strategies import LayoutStrategy, SmartLayoutStrategy
 
 # Set up logging
 logging.basicConfig(
@@ -64,15 +66,180 @@ def calculate_file_hash(file_path: str) -> str:
             sha1.update(chunk)
     return sha1.hexdigest()
 
-def get_image_dimensions(file_path: str) -> tuple:
-    """Get image dimensions using PIL, honoring EXIF orientation"""
+def extract_image_metadata(file_path: str) -> Dict[str, Any]:
+    """Extract comprehensive metadata from an image file"""
+    metadata = {
+        "dimensions": {"width": 0, "height": 0, "aspect_ratio": 0.0},
+        "file_info": {"size_bytes": 0, "format": "", "color_mode": ""},
+        "exif": {},
+        "layout_hints": {
+            "is_portrait": False,
+            "is_panoramic": False,
+            "suggested_grid_span": 1,
+            "visual_weight": "medium"
+        }
+    }
+    
     try:
+        # Get file size
+        metadata["file_info"]["size_bytes"] = os.path.getsize(file_path)
+        
         with Image.open(file_path) as img:
+            # Basic image info
+            metadata["file_info"]["format"] = img.format or "UNKNOWN"
+            metadata["file_info"]["color_mode"] = img.mode
+            
+            # Get dimensions with EXIF orientation applied
             img = ImageOps.exif_transpose(img)
-            return img.size
+            width, height = img.size
+            metadata["dimensions"]["width"] = width
+            metadata["dimensions"]["height"] = height
+            metadata["dimensions"]["aspect_ratio"] = round(width / height, 2) if height > 0 else 0.0
+            
+            # Extract EXIF data
+            if hasattr(img, '_getexif') and img._getexif() is not None:
+                exif_data = img._getexif()
+                for tag_id, value in exif_data.items():
+                    tag = TAGS.get(tag_id, tag_id)
+                    
+                    # Convert complex EXIF values to strings
+                    if isinstance(value, bytes):
+                        try:
+                            value = value.decode('utf-8')
+                        except UnicodeDecodeError:
+                            value = str(value)
+                    elif isinstance(value, tuple) and len(value) == 2:
+                        # Handle rational numbers (like focal length)
+                        if value[1] != 0:
+                            value = round(value[0] / value[1], 2)
+                        else:
+                            value = value[0]
+                    
+                    metadata["exif"][tag] = value
+                    
+                    # Extract GPS coordinates if available
+                    if tag == "GPSInfo" and isinstance(value, dict):
+                        gps_coords = extract_gps_coordinates(value)
+                        if gps_coords:
+                            metadata["exif"]["gps_coordinates"] = gps_coords
+            
+            # Calculate layout hints
+            aspect_ratio = metadata["dimensions"]["aspect_ratio"]
+            metadata["layout_hints"]["is_portrait"] = aspect_ratio < 1.0
+            metadata["layout_hints"]["is_panoramic"] = aspect_ratio > 2.5
+            
+            # Suggest grid span based on image characteristics
+            if metadata["layout_hints"]["is_panoramic"]:
+                metadata["layout_hints"]["suggested_grid_span"] = 3  # Full width
+                metadata["layout_hints"]["visual_weight"] = "high"
+            elif metadata["layout_hints"]["is_portrait"]:
+                metadata["layout_hints"]["suggested_grid_span"] = 1
+                metadata["layout_hints"]["visual_weight"] = "medium"
+            elif aspect_ratio > 1.5:
+                metadata["layout_hints"]["suggested_grid_span"] = 2
+                metadata["layout_hints"]["visual_weight"] = "medium"
+            else:
+                metadata["layout_hints"]["suggested_grid_span"] = 1
+                metadata["layout_hints"]["visual_weight"] = "medium"
+                
     except Exception as e:
-        logger.warning(f"Could not get dimensions for {file_path}: {e}")
-        return (0, 0)
+        logger.warning(f"Could not extract metadata for {file_path}: {e}")
+    
+    return metadata
+
+def extract_gps_coordinates(gps_info: Dict) -> Optional[List[float]]:
+    """Extract GPS coordinates from EXIF GPS info"""
+    try:
+        lat_ref = gps_info.get(1)  # N or S
+        lat = gps_info.get(2)  # Latitude
+        lon_ref = gps_info.get(3)  # E or W  
+        lon = gps_info.get(4)  # Longitude
+        
+        if lat and lon:
+            # Convert from degrees, minutes, seconds to decimal
+            lat_decimal = convert_to_degrees(lat)
+            lon_decimal = convert_to_degrees(lon)
+            
+            # Apply hemisphere
+            if lat_ref == 'S':
+                lat_decimal = -lat_decimal
+            if lon_ref == 'W':
+                lon_decimal = -lon_decimal
+                
+            return [round(lat_decimal, 6), round(lon_decimal, 6)]
+    except Exception:
+        pass
+    return None
+
+def convert_to_degrees(value):
+    """Convert GPS coordinates from degrees, minutes, seconds to decimal degrees"""
+    if isinstance(value, (list, tuple)) and len(value) >= 3:
+        degrees = float(value[0])
+        minutes = float(value[1]) / 60.0
+        seconds = float(value[2]) / 3600.0
+        return degrees + minutes + seconds
+    return float(value)
+
+def get_image_dimensions(file_path: str) -> tuple:
+    """Get image dimensions using PIL, honoring EXIF orientation (legacy compatibility)"""
+    metadata = extract_image_metadata(file_path)
+    return (metadata["dimensions"]["width"], metadata["dimensions"]["height"])
+
+def get_metadata_cache_path(output_path: str) -> str:
+    """Get the path for the metadata cache file"""
+    output_dir = os.path.dirname(output_path)
+    output_filename = os.path.splitext(os.path.basename(output_path))[0]
+    return os.path.join(output_dir, f"{output_filename}_metadata.json")
+
+def load_metadata_cache(cache_path: str) -> Dict[str, Any]:
+    """Load metadata cache from JSON file"""
+    try:
+        if os.path.exists(cache_path):
+            with open(cache_path, 'r') as f:
+                return json.load(f)
+    except Exception as e:
+        logger.warning(f"Could not load metadata cache from {cache_path}: {e}")
+    
+    return {"gallery_metadata": {}, "images": {}}
+
+def save_metadata_cache(cache_path: str, metadata: Dict[str, Any]) -> None:
+    """Save metadata cache to JSON file"""
+    try:
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        with open(cache_path, 'w') as f:
+            json.dump(metadata, f, indent=2, default=str)
+        logger.debug(f"Saved metadata cache to {cache_path}")
+    except Exception as e:
+        logger.error(f"Could not save metadata cache to {cache_path}: {e}")
+
+def is_metadata_stale(image_path: str, cached_metadata: Dict[str, Any]) -> bool:
+    """Check if cached metadata is stale compared to the actual file"""
+    try:
+        file_mtime = os.path.getmtime(image_path)
+        file_size = os.path.getsize(image_path)
+        
+        cached_mtime = cached_metadata.get("file_info", {}).get("modified_time", 0)
+        cached_size = cached_metadata.get("file_info", {}).get("size_bytes", 0)
+        
+        return file_mtime != cached_mtime or file_size != cached_size
+    except Exception:
+        return True
+
+def update_metadata_cache(cache_data: Dict[str, Any], image_path: str, image_metadata: Dict[str, Any], urls: Dict[str, str]) -> None:
+    """Update the metadata cache with new image data"""
+    filename = os.path.basename(image_path)
+    
+    # Add file modification time for staleness checking
+    try:
+        image_metadata["file_info"]["modified_time"] = os.path.getmtime(image_path)
+    except Exception:
+        image_metadata["file_info"]["modified_time"] = 0
+    
+    # Add URLs to metadata
+    image_metadata["urls"] = urls
+    
+    # Update cache
+    cache_data["images"][filename] = image_metadata
 
 def sanitize_filename(filename: str) -> str:
     """Convert filename to a safe format for URLs"""
@@ -263,40 +430,8 @@ def generate_responsive_image_html(urls: Dict[str, str], alt_text: str, width: i
          height="{height}"
          loading="{loading}">"""
 
-def generate_gallery_html(photos: List[Dict], title: str) -> str:
-    """Generate HTML for a photo gallery with a full-width first image and 3x3 grid for the rest"""
-    gallery_sections = []
-    
-    # Add a full-width first image if available
-    if photos:
-        first_photo = photos[0]
-        width, height = get_image_dimensions(first_photo['path'])
-        
-        gallery_sections.append(f"""<div class="gallery">
-    <div class="gallery-item full">
-        {generate_responsive_image_html(first_photo['urls'], title, width, height, loading="eager")}
-    </div>
-</div>""")
-    
-    # Group remaining photos into 3x3 grids
-    remaining_photos = photos[1:] if photos else []
-    while remaining_photos:
-        grid_photos = remaining_photos[:9]
-        remaining_photos = remaining_photos[9:]
-        
-        if grid_photos:
-            grid_html = ['<div class="gallery grid-3x3">']
-            for photo in grid_photos:
-                width, height = get_image_dimensions(photo['path'])
-                grid_html.append(f"""    <div class="gallery-item">
-        {generate_responsive_image_html(photo['urls'], title, width, height)}
-    </div>""")
-            grid_html.append('</div>')
-            gallery_sections.append('\n'.join(grid_html))
-    
-    return '\n\n'.join(gallery_sections)
 
-def generate_markdown(title: str, date: datetime, photos: List[Dict], output_file: str) -> None:
+def generate_markdown(title: str, date: datetime, photos: List[Dict], output_file: str, layout_strategy: LayoutStrategy) -> None:
     """Generate a markdown file with the photos in the correct layout"""
     # Create the front matter
     front_matter = f"""---
@@ -309,8 +444,8 @@ permalink: /travel/{date.strftime('%Y-%m-%d')}-{title.lower().replace(' ', '-')}
 
 """
     
-    # Generate gallery HTML
-    gallery_html = generate_gallery_html(photos, title)
+    # Generate gallery HTML using the strategy
+    gallery_html = layout_strategy.generate_gallery_html(photos, title)
     
     # Combine everything
     content = front_matter + gallery_html
@@ -318,6 +453,33 @@ permalink: /travel/{date.strftime('%Y-%m-%d')}-{title.lower().replace(' ', '-')}
     # Write to file
     with open(output_file, 'w') as f:
         f.write(content)
+
+def get_available_strategies() -> Dict[str, LayoutStrategy]:
+    """Get all available layout strategies"""
+    return {
+        'smart': SmartLayoutStrategy()
+    }
+
+def get_layout_strategy(strategy_name: str) -> LayoutStrategy:
+    """Get layout strategy instance by name"""
+    strategies = get_available_strategies()
+    
+    if strategy_name not in strategies:
+        raise ValueError(f"Unknown layout strategy: {strategy_name}")
+    
+    return strategies[strategy_name]
+
+def list_strategies() -> None:
+    """List all available layout strategies with descriptions"""
+    strategies = get_available_strategies()
+    
+    print("Available layout strategies:")
+    print()
+    
+    for name, strategy in strategies.items():
+        print(f"  {name:12} - {strategy.description}")
+    
+    print()
 
 def parse_args():
     """Parse command line arguments with a better help message"""
@@ -340,6 +502,7 @@ def parse_args():
     
     parser.add_argument(
         'dir',
+        nargs='?',
         help='Directory containing photos to upload'
     )
     
@@ -368,6 +531,25 @@ def parse_args():
         '--force-reupload',
         action='store_true',
         help='Force reupload of images even if they already exist'
+    )
+    
+    parser.add_argument(
+        '--refresh-metadata',
+        action='store_true',
+        help='Force refresh of image metadata cache'
+    )
+    
+    parser.add_argument(
+        '--layout-strategy',
+        default='smart',
+        choices=list(get_available_strategies().keys()),
+        help='Layout strategy to use for gallery arrangement (default: smart)'
+    )
+    
+    parser.add_argument(
+        '--list-strategies',
+        action='store_true',
+        help='List all available layout strategies and exit'
     )
     
     return parser.parse_args()
@@ -487,12 +669,26 @@ def process_images_parallel(image_paths: List[str], output_dir: str) -> List[Dic
 def main():
     args = parse_args()
     
+    # Handle list strategies option
+    if args.list_strategies:
+        list_strategies()
+        sys.exit(0)
+    
+    # Validate directory is provided when not listing strategies
+    if not args.dir:
+        print("Error: Directory argument is required")
+        sys.exit(1)
+    
     # Set up logging with more detailed format
     logging.basicConfig(
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
     )
+    
+    # Get layout strategy
+    layout_strategy = get_layout_strategy(args.layout_strategy)
+    logger.info(f"Using layout strategy: {layout_strategy.name} - {layout_strategy.description}")
     
     # Validate directory exists
     if not os.path.isdir(args.dir):
@@ -521,6 +717,17 @@ def main():
     if not args.output:
         args.output = f"_travel/{date.strftime('%Y-%m-%d')}-{title.lower().replace(' ', '-')}.markdown"
     
+    # Set up metadata cache
+    cache_path = get_metadata_cache_path(args.output)
+    metadata_cache = load_metadata_cache(cache_path)
+    
+    # Update gallery metadata
+    metadata_cache["gallery_metadata"] = {
+        "title": title,
+        "date": date.isoformat(),
+        "total_images": 0  # Will be updated later
+    }
+    
     # Get list of image files
     image_extensions = {'.jpg', '.jpeg', '.png', '.gif'}
     photos = []
@@ -546,8 +753,18 @@ def main():
     with tempfile.TemporaryDirectory() as temp_dir:
         if args.dry_run:
             logger.info(f"Would process {len(image_files)} images")
-            # Create dummy URLs for dry run
+            # Create dummy URLs for dry run with metadata
             for file in image_files:
+                filename = os.path.basename(file)
+                # Extract metadata for dry run to test layout logic
+                cached_image_metadata = metadata_cache["images"].get(filename, {})
+                if args.refresh_metadata or is_metadata_stale(file, cached_image_metadata) or not cached_image_metadata:
+                    logger.info(f"Extracting metadata for dry run: {filename}")
+                    image_metadata = extract_image_metadata(file)
+                    update_metadata_cache(metadata_cache, file, image_metadata, {})
+                else:
+                    image_metadata = cached_image_metadata
+                
                 dummy_urls = {
                     '1000w': {'webp': f"https://example.com/{os.path.basename(file)}.webp", 
                              'jpeg': f"https://example.com/{os.path.basename(file)}.jpg"},
@@ -556,7 +773,8 @@ def main():
                 }
                 photos.append({
                     'urls': dummy_urls,
-                    'path': file
+                    'path': file,
+                    'metadata': image_metadata
                 })
         else:
             # Check for existing images first to avoid unnecessary processing
@@ -570,28 +788,47 @@ def main():
             
             files_to_process = []
             for file in image_files:
-                original_filename = os.path.splitext(os.path.basename(file))[0]
+                filename = os.path.basename(file)
+                original_filename = os.path.splitext(filename)[0]
                 destination_folder = f"photos/{title.lower().replace(' ', '_')}"
                 
+                # Check if we have cached metadata and if it's still valid
+                cached_image_metadata = metadata_cache["images"].get(filename, {})
+                metadata_is_stale = is_metadata_stale(file, cached_image_metadata)
+                
+                # Extract metadata if needed
+                if args.refresh_metadata or metadata_is_stale or not cached_image_metadata:
+                    logger.info(f"Extracting metadata for {filename}")
+                    image_metadata = extract_image_metadata(file)
+                else:
+                    logger.debug(f"Using cached metadata for {filename}")
+                    image_metadata = cached_image_metadata
+                
+                # Check for existing URLs in B2 (unless force_reupload)
                 if not args.force_reupload:
                     existing_urls = check_existing_images_in_b2(bucket, original_filename, destination_folder, file)
                     if existing_urls:
                         logger.info(f"All sizes already exist for {os.path.basename(file)}, skipping processing")
+                        # Update metadata cache with existing URLs
+                        update_metadata_cache(metadata_cache, file, image_metadata, existing_urls)
                         photos.append({
                             'urls': existing_urls,
-                            'path': file
+                            'path': file,
+                            'metadata': image_metadata
                         })
                         continue
                 
-                files_to_process.append(file)
+                files_to_process.append((file, image_metadata))
             
             if files_to_process:
                 logger.info(f"Processing {len(files_to_process)} new images...")
-                processed_results = process_images_parallel(files_to_process, temp_dir)
+                # Extract just file paths for parallel processing
+                file_paths = [item[0] for item in files_to_process]
+                processed_results = process_images_parallel(file_paths, temp_dir)
                 
                 # Upload to B2 and collect results
                 logger.info("Starting B2 uploads...")
-                for file, urls in zip(files_to_process, processed_results):
+                for (file, image_metadata), urls in zip(files_to_process, processed_results):
                     if urls:  # Only process if we have valid URLs
                         logger.info(f"Uploading {os.path.basename(file)} to B2...")
                         uploaded_urls = upload_to_b2(
@@ -603,9 +840,13 @@ def main():
                             args.force_reupload
                         )
                         
+                        # Update metadata cache with new URLs
+                        update_metadata_cache(metadata_cache, file, image_metadata, uploaded_urls)
+                        
                         photos.append({
                             'urls': uploaded_urls,
-                            'path': file
+                            'path': file,
+                            'metadata': image_metadata
                         })
                         logger.info(f"Completed upload for {os.path.basename(file)}")
             else:
@@ -615,13 +856,22 @@ def main():
         logger.error(f"No images were successfully processed")
         sys.exit(1)
     
+    # Update final gallery metadata
+    metadata_cache["gallery_metadata"]["total_images"] = len(photos)
+    
+    # Save metadata cache
+    if not args.dry_run:
+        save_metadata_cache(cache_path, metadata_cache)
+        logger.info(f"Saved metadata cache to {cache_path}")
+    
     # Generate markdown
     if not args.dry_run:
         logger.info(f"Generating markdown file: {args.output}")
-        generate_markdown(title, date, photos, args.output)
+        generate_markdown(title, date, photos, args.output, layout_strategy)
         logger.info("Done!")
     else:
         logger.info(f"Would generate markdown file: {args.output}")
+        logger.info(f"Would save metadata cache to: {cache_path}")
 
 if __name__ == '__main__':
     main() 
