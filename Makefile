@@ -5,5 +5,5 @@ serve:
 	bash --login -c "chruby-init; bundle exec jekyll serve"
 run: serve
 
-# deploy: build
-# 	./_deploy.sh
+deploy: build
+	./_deploy.sh
