@@ -986,3 +986,83 @@ body.travel-page {
         gap: 4px;
     }
 }
+
+/* Mosaic Gallery Layout (non-cropping, pattern-aware) */
+.gallery.layout-strat-mosaic {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 2rem 0;
+    width: 100%;
+}
+
+.gallery.layout-strat-mosaic .mosaic-block {
+    width: 100%;
+}
+
+.gallery.layout-strat-mosaic .gallery-item {
+    position: relative;
+}
+
+/* Ensure no cropping: let images size naturally */
+.gallery.layout-strat-mosaic .gallery-item picture,
+.gallery.layout-strat-mosaic .gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Block: portrait left, two landscapes stacked right */
+.gallery.layout-strat-mosaic .mosaic-block.narrow-two-wide {
+    display: flex;
+    gap: 12px;
+}
+.gallery.layout-strat-mosaic .mosaic-block.narrow-two-wide .col-left {
+    flex: 0 0 38%;
+}
+.gallery.layout-strat-mosaic .mosaic-block.narrow-two-wide .col-right {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Rows */
+.gallery.layout-strat-mosaic .mosaic-block.row-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+.gallery.layout-strat-mosaic .mosaic-block.row-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.gallery.layout-strat-mosaic .mosaic-block.single,
+.gallery.layout-strat-mosaic .mosaic-block.full {
+    display: block;
+}
+
+/* Responsive adjustments for mosaic */
+@media screen and (max-width: 900px) {
+    .gallery.layout-strat-mosaic .mosaic-block.row-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 700px) {
+    .gallery.layout-strat-mosaic .mosaic-block.narrow-two-wide {
+        flex-direction: column;
+    }
+    .gallery.layout-strat-mosaic .mosaic-block.row-2,
+    .gallery.layout-strat-mosaic .mosaic-block.row-3 {
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width: 480px) {
+    .gallery.layout-strat-mosaic { gap: 8px; }
+    .gallery.layout-strat-mosaic .mosaic-block.narrow-two-wide { gap: 8px; }
+    .gallery.layout-strat-mosaic .mosaic-block.row-2,
+    .gallery.layout-strat-mosaic .mosaic-block.row-3 { gap: 8px; }
+}

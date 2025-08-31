@@ -218,8 +218,7 @@ class JustifiedLayoutStrategy(LayoutStrategy):
          alt="{alt_text}" 
          width="{width}" 
          height="{height}"
-         loading="{loading}"
-         style="object-fit: cover; width: 100%; height: 100%;">
+         loading="{loading}">
 </picture>"""
         else:
             # Handle single format URLs
@@ -238,5 +237,4 @@ class JustifiedLayoutStrategy(LayoutStrategy):
          alt="{alt_text}" 
          width="{width}" 
          height="{height}"
-         loading="{loading}"
-         style="object-fit: cover; width: 100%; height: 100%;"{class_attr}>"""
+         loading="{loading}"{class_attr}>"""

@@ -22,6 +22,7 @@ import shutil
 import multiprocessing
 from functools import partial
 from layout_strategies import LayoutStrategy, SmartLayoutStrategy
+from layout_strategies.mosaic_layout import MosaicLayoutStrategy
 from layout_strategies.justified_layout import JustifiedLayoutStrategy
 
 # Set up logging
@@ -464,7 +465,8 @@ def get_available_strategies() -> Dict[str, LayoutStrategy]:
     """Get all available layout strategies"""
     return {
         'smart': SmartLayoutStrategy(),
-        'justified': JustifiedLayoutStrategy()
+        'justified': JustifiedLayoutStrategy(),
+        'mosaic': MosaicLayoutStrategy()
     }
 
 def get_layout_strategy(strategy_name: str) -> LayoutStrategy:
