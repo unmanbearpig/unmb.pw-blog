@@ -6,4 +6,5 @@ serve:
 run: serve
 
 deploy: build
-	./_deploy.sh
+	rsync -avz  _site/ unmb.pw:/var/www/htdocs/unmb.pw/
+	# ./_deploy.sh

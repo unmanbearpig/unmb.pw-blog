@@ -34,6 +34,11 @@ show_excerpts: true
 # twitter_username: jekyllrb
 github_username:  unmanbearpig
 
+header_pages:
+  - about.markdown
+  - ticks_and_trips.md
+  - travel.md
+
 # Build settings
 theme: minima
 plugins:
