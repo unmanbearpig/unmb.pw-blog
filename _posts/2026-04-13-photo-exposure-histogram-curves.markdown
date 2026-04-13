@@ -33,6 +33,10 @@ Once the lights are removed from the visible area, the histogram becomes conside
 
 This is precisely why reading the full histogram without paying attention to what produces its shape can be misleading — a handful of stage LEDs are enough to suggest that the image already contains strong highlights, while the actual subject remains too dark.
 
+## About the tool
+
+The screenshots in this article show [Snapseed](https://play.google.com/store/apps/details?id=com.niksoftware.snapseed&hl=en-US), a free photo editing app available on [Android](https://play.google.com/store/apps/details?id=com.niksoftware.snapseed&hl=en-US) and [iOS](https://apps.apple.com/us/app/snapseed-photo-editor/id439438619). However, the same logic applies to nearly all photo editing apps — most of them include either a Curves tool or a simpler Levels adjustment that accomplishes the same thing. The specific interface and names may vary, but the fundamental principle of reading the histogram in context with the actual image remains the same regardless of which tool you use.
+
 ## Moving the white point
 
 The correction itself is straightforward: the white point in Curves is moved to the left, roughly to the position where the histogram begins rising sharply.
