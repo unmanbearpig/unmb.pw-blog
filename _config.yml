@@ -30,6 +30,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://unmb.pw" # the base hostname & protocol for your site, e.g. http://example.com
 
 show_excerpts: true
+default_content_lang: en
 
 # twitter_username: jekyllrb
 github_username:  unmanbearpig

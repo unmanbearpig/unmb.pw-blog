@@ -5,6 +5,23 @@ layout: default
 
   <header class="post-header">
     <h1 class="post-title">{{ page.title | escape }}</h1>
+    {%- if page.translation_key and page.collection -%}
+      {%- assign translation_docs = site[page.collection] | where: "translation_key", page.translation_key -%}
+      {%- if translation_docs.size > 1 -%}
+        <nav class="post-language-switcher" aria-label="Available languages">
+          <span class="post-language-switcher__label">Language:</span>
+          {%- for translation in translation_docs -%}
+            {%- assign translation_lang = translation.lang | default: site.default_content_lang | default: "en" -%}
+            {%- assign translation_label = translation.language_name | default: translation_lang -%}
+            {%- if translation.url == page.url -%}
+              <span class="post-language-switcher__current">{{ translation_label }}</span>
+            {%- else -%}
+              <a href="{{ translation.url | relative_url }}">{{ translation_label }}</a>
+            {%- endif -%}
+          {%- endfor -%}
+        </nav>
+      {%- endif -%}
+    {%- endif -%}
   </header>
 
   <div class="post-content">

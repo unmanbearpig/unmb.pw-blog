@@ -10,9 +10,14 @@ layout: default
   {{ content }}
 
   {%- if site.posts.size > 0 -%}
+    {%- assign default_content_lang = site.default_content_lang | default: "en" -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
       {%- for post in site.posts -%}
+      {%- assign post_lang = post.lang | default: default_content_lang -%}
+      {%- if post.translation_key and post_lang != default_content_lang -%}
+        {%- continue -%}
+      {%- endif -%}
       <li>
         {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
         <span class="post-meta">{{ post.date | date: date_format }}</span>

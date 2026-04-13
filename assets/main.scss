@@ -29,4 +29,23 @@ video {
   max-width: 100%;
   height: auto;
   margin-bottom: 1em;
-} 
+}
+
+.post-language-switcher {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.post-language-switcher__label {
+  font-weight: 600;
+  margin-right: 0.35rem;
+}
+
+.post-language-switcher__current {
+  font-weight: 600;
+}
+
+.post-language-switcher a,
+.post-language-switcher__current {
+  margin-right: 0.5rem;
+}
