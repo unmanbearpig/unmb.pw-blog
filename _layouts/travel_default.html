@@ -3,24 +3,20 @@
 
   {%- include head.html -%}
 
-  <head>
-    <link rel="stylesheet" href="/assets/css/video-player-theme.css">
-    <script src="/assets/js/video-player.js" defer></script>
-    <link rel="stylesheet" href="/assets/css/travel.css?v={{ site.time | date: '%s' }}">
-    <script src="/assets/js/travel.js?v={{ site.time | date: '%s' }}" defer></script>
-  </head>
-
   <body class="travel-page" data-layout="{{ page.layout }}">
 
     <header class="site-header">
       <div class="wrapper">
         <div class="travel-header-container">
-          <!-- Title on the left -->
-          <a class="site-title" href="/travel/">unmanbearpig/travel</a>
+          <a class="site-title site-title--brand" href="{{ "/travel/" | relative_url }}">
+            <img class="site-logo" src="{{ "/assets/brand/logo.png" | relative_url }}" alt="" aria-hidden="true" width="512" height="367">
+            <span>unmanbearpig/travel</span>
+          </a>
           
-          <!-- Navigation on the right -->
           <div class="travel-nav">
-            <a href="/" class="travel-home-link">Main Site</a>
+            <a href="{{ "/" | relative_url }}" class="travel-home-link" aria-label="Main Site">
+              <span class="travel-home-link__text">Main Site</span>
+            </a>
           </div>
         </div>
       </div>

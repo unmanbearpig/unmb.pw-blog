@@ -25,7 +25,7 @@ email: blog@unmbp.pw
 description: >- # this means to ignore newlines until "baseurl:"
   Blog on computery things
 
-baseurl: "" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 
 url: "https://unmb.pw" # the base hostname & protocol for your site, e.g. http://example.com
 
