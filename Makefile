@@ -1,8 +1,8 @@
 build:
-	bash --login -c "chruby-init; bundle exec jekyll build"
+	chruby-run bundle exec jekyll build
 
 serve:
-	bash --login -c "chruby-init; bundle exec jekyll serve"
+	chruby-run bundle exec jekyll serve
 run: serve
 
 deploy: build
