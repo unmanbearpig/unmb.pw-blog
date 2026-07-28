@@ -3,7 +3,7 @@ layout: travel-post
 title:  "Chemey nag füta leufü"
 date:   2025-02-04 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-04-under-big-river.html
+permalink: /blog/travel/2025-02-04-under-big-river.html
 ---
 
 <video-player

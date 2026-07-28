@@ -1,0 +1,113 @@
+<div class="editorial-home">
+  <section class="ed-hero portfolio-shell">
+    <div class="ed-hero__main">
+      <p class="ui-label">Ivan Fedyunin / Santiago, Chile</p>
+      <h1>Senior backend and product engineer for data-heavy and operational systems.</h1>
+      <p class="ed-hero__lead">Rails and PostgreSQL are my commercial base. Current work spans Go, Python, data pipelines and evaluated AI systems.</p>
+      <div class="action-row">
+        <a class="action action--primary" href="{{ "/work/" | relative_url }}">View work</a>
+        <a class="action action--quiet" href="{{ "/assets/cv/Ivan_Fedyunin_CV.pdf" | relative_url }}">View CV</a>
+      </div>
+    </div>
+    <aside class="ed-hero__index" aria-label="Professional summary">
+      <dl>
+        <div><dt>Experience</dt><dd>15+ years</dd></div>
+        <div><dt>Commercial base</dt><dd>Rails, PostgreSQL</dd></div>
+        <div><dt>Current systems</dt><dd>Go, Python, AI and data</dd></div>
+        <div><dt>Working mode</dt><dd>Remote, Americas overlap</dd></div>
+      </dl>
+      <p>Available for senior backend and product roles.</p>
+    </aside>
+  </section>
+
+  <section class="ed-project ed-project--hostelpunk portfolio-shell" id="work">
+    <header class="ed-section-head">
+      <p class="ui-label">01 / Technical flagship</p>
+      <p>Live product, built and operated solo</p>
+    </header>
+    <div class="ed-project__title">
+      <h2>HostelPunk</h2>
+      <p>A hostel discovery system that turns noisy multi-source reviews into specific, inspectable signals.</p>
+    </div>
+    <figure class="ed-project__image">
+      <img src="{{ "/assets/images/portfolio/hostelpunk-home.webp" | relative_url }}" width="1440" height="900" alt="The live HostelPunk homepage with hostel search over a travel photograph">
+    </figure>
+    <dl class="evidence-strip" aria-label="HostelPunk scale">
+      <div><dt>74M</dt><dd>reviews normalized</dd></div>
+      <div><dt>22,600</dt><dd>properties linked</dd></div>
+      <div><dt>235</dt><dd>versioned signals</dd></div>
+      <div><dt>about $30</dt><dd>monthly infrastructure</dd></div>
+    </dl>
+    <div class="ed-project__body">
+      <p>I own the Go and HTMX product, Python ingestion and analysis workers, PostgreSQL and PostGIS data model, evaluation sets, deployment and production operation.</p>
+      <div class="link-pair">
+        <a href="https://hostelpunk.com/">Open the live product</a>
+        <a href="{% post_url 2026-05-15-hostelpunk %}">Read the engineering note</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ed-project ed-project--vestuario portfolio-shell">
+    <header class="ed-section-head">
+      <p class="ui-label">02 / Client product</p>
+      <p>Identity, interface, Rails system and production ownership</p>
+    </header>
+    <div class="ed-project__title">
+      <h2>Vestuario Antiguo</h2>
+      <p>A public brand experience and the operational software behind a historical-clothing rental atelier.</p>
+    </div>
+    <div class="ed-project__split">
+      <figure class="ed-project__image">
+        <img src="{{ "/assets/images/portfolio/hero-landscape.webp" | relative_url }}" width="1960" height="1307" alt="A model in a red historical dress beside a piano and sunlit window">
+      </figure>
+      <div class="ed-project__body">
+        <p>Tatiana supplied the initial direction and references and approved the work. I created the complete visual identity, including the logo, designed the interface, built the Rails application and continue to manage the technical product.</p>
+        <p class="review-caveat">Case-study copy and metrics remain private until the client approves their exact public use.</p>
+        <a href="{{ "/work/#vestuario" | relative_url }}">See the responsibility map</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="career-band portfolio-shell">
+    <div class="career-band__statement">
+      <p class="ui-label">Continuity</p>
+      <h2>Product judgment backed by long production memory.</h2>
+    </div>
+    <ol class="career-track">
+      <li><span>2009</span><strong>Started professional software work</strong><p>Testing infrastructure for Fibre Channel networking systems.</p></li>
+      <li><span>2016 to 2024</span><strong>Eight-year Rails client relationship</strong><p>Feature ownership and production support for an education platform.</p></li>
+      <li><span>2018</span><strong>Marketplace performance</strong><p>Roughly 10x response-time improvement on high-traffic Rails pages.</p></li>
+      <li><span>Now</span><strong>Products, data and evaluated AI</strong><p>Hands-on ownership from architecture through production behavior.</p></li>
+    </ol>
+  </section>
+
+  <section class="responsibility-band portfolio-shell">
+    <p class="ui-label">How I use coding agents</p>
+    <blockquote>I use coding agents extensively to increase throughput. I define the work, make the product and architecture decisions, review the output, test it, deploy it and remain responsible for production behavior.</blockquote>
+  </section>
+
+  <section class="writing-band portfolio-shell">
+    <div class="writing-band__intro">
+      <p class="ui-label">Selected writing</p>
+      <h2>Notes from things I actually built or investigated.</h2>
+    </div>
+    <ol class="writing-index">
+      <li><span>2026</span><a href="{% post_url 2026-05-15-hostelpunk %}">HostelPunk: ranking atmosphere instead of generic scores</a></li>
+      <li><span>2026</span><a href="{% post_url 2026-02-10-listenomics %}">Listenomics: listening history as a small data product</a></li>
+      <li><span>2024</span><a href="{% post_url 2024-02-23-unmenu %}">A Swift and Rust launcher for macOS</a></li>
+      <li><span>2022</span><a href="{% post_url 2022-06-09-linux-kernel-mouse-overclocking %}">Overclocking a mouse through the Linux kernel</a></li>
+    </ol>
+    <a class="text-action" href="{{ "/blog/" | relative_url }}">Browse all writing</a>
+  </section>
+
+  <section class="contact-band portfolio-shell" id="contact">
+    <div>
+      <p class="ui-label">Contact</p>
+      <h2>Need someone who can own the system, not just its ticket queue?</h2>
+    </div>
+    <div class="contact-band__actions">
+      <a class="action action--primary" href="mailto:ivan.fedyunin@gmail.com">ivan.fedyunin@gmail.com</a>
+      <a class="service-note" href="{{ site.service_review_url }}">Website-service draft, local review only</a>
+    </div>
+  </section>
+</div>

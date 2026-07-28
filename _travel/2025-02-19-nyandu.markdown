@@ -3,7 +3,7 @@ layout: travel-post
 title: "Ñandu on the way to Piedra Parada"
 date:   2025-02-19 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-19-nyandu.html
+permalink: /blog/travel/2025-02-19-nyandu.html
 ---
 
 

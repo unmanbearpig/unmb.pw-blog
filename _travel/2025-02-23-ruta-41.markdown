@@ -3,7 +3,7 @@ layout: travel-post
 title: "Ruta 41"
 date:   2025-02-23 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-23-ruta-41.html
+permalink: /blog/travel/2025-02-23-ruta-41.html
 ---
 
 <video-player

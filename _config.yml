@@ -1,70 +1,65 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you: 
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+title: Ivan Fedyunin
+short_title: unmanbearpig
+email: ivan.fedyunin@gmail.com
+description: >-
+  Senior backend and product engineer building data-heavy and operational
+  systems with Ruby on Rails, PostgreSQL, Go, Python and evaluated AI.
+url: "https://unmb.pw"
+baseurl: ""
+lang: en
+timezone: America/Santiago
+review_mode: true
+service_review_url: "http://127.0.0.1:4322/"
 
-title: unmanbearpig
-
-email: blog@unmbp.pw
-
-description: >- # this means to ignore newlines until "baseurl:"
-  Blog on computery things
-
-baseurl: "/blog" # the subpath of your site, e.g. /blog
-
-url: "https://unmb.pw" # the base hostname & protocol for your site, e.g. http://example.com
+author:
+  name: Ivan Fedyunin
+  location: Santiago, Chile
+  github: unmanbearpig
+  linkedin: ifedyunin
 
 show_excerpts: true
 default_content_lang: en
+permalink: /blog/:categories/:year/:month/:day/:title.html
 
-# twitter_username: jekyllrb
-github_username:  unmanbearpig
-
-header_pages:
-  - about.markdown
-  - ticks_and_trips.md
-  - travel.md
-
-# Build settings
 theme: minima
 plugins:
   - jekyll-feed
 
+feed:
+  path: /blog/feed.xml
+
 collections:
   ticks_and_trips:
     output: true
-    permalink: /:collection/:name
+    permalink: /blog/:collection/:name/
   links:
   travel:
     output: true
-    permalink: /:collection/:name
+    permalink: /blog/:collection/:name/
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: Ivan Fedyunin
+      theme: editorial
+  - scope:
+      path: ""
+      type: travel
+    values:
+      theme: editorial
+  - scope:
+      path: ""
+      type: ticks_and_trips
+    values:
+      theme: editorial
+
 exclude:
   - .sass-cache/
   - .jekyll-cache/
+  - .bundle/
   - gemfiles/
   - Gemfile
   - Gemfile.lock
@@ -74,3 +69,15 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - venv/
+  - deploy.sh
+  - Makefile
+  - README.md
+  - TODO
+  - b2_photo_gallery.py
+  - b2_photo_gallery.sh
+  - layout_strategies/
+  - requirements.txt
+  - update-responsive-images.py
+  - worktrees/
+  - review-assets/
+  - plans/

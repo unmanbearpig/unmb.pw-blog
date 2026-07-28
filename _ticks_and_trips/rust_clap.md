@@ -3,7 +3,7 @@ layout: page
 title: Rust Clap Cheatsheet
 date: 2022-12-14
 excerpt: ""
-permalink: /ticks_and_trips/rust_clap.html
+permalink: /blog/ticks_and_trips/rust_clap.html
 ---
 
 # [Clap](https://docs.rs/clap/latest/clap/) with "derive" feature

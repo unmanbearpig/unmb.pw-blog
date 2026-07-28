@@ -3,7 +3,7 @@ layout: travel-post
 title: "More Santiago Aug 15"
 date:   2025-08-17 12:13:59.473094
 categories: travel
-permalink: /travel/2025-08-17-more-santiago-aug-15.html
+permalink: /blog/travel/2025-08-17-more-santiago-aug-15.html
 ---
 
 <div class="gallery">

@@ -1,20 +1,28 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
-
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
   {%- include head.html -%}
+  <body class="theme-{{ page.theme | default: 'editorial' }} layout-{{ page.layout | default: 'default' }}{% if page.body_class %} {{ page.body_class }}{% endif %}">
+    <a class="skip-link" href="#content">Skip to content</a>
 
-  <body {% if page.layout == 'travel' or page.layout == 'travel-post' or layout.name == 'travel' %}class="travel-page" data-layout="{{ page.layout }}"{% endif %}>
+    {%- if page.concept_label -%}
+    <aside class="concept-bar" aria-label="Concept review navigation">
+      <span>{{ page.concept_label }}</span>
+      <a href="{{ "/review/concepts/" | relative_url }}">Compare all three</a>
+    </aside>
+    {%- endif -%}
 
     {%- include header.html -%}
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+    <main id="content" class="page-content{% if page.full_width %} page-content--full{% endif %}">
+      {%- if page.full_width -%}
         {{ content }}
-      </div>
+      {%- else -%}
+        <div class="content-shell">
+          {{ content }}
+        </div>
+      {%- endif -%}
     </main>
 
     {%- include footer.html -%}
-
   </body>
-
 </html>

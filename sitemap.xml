@@ -1,0 +1,23 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>{{ "/" | absolute_url }}</loc></url>
+  <url><loc>{{ "/work/" | absolute_url }}</loc></url>
+  <url><loc>{{ "/about/" | absolute_url }}</loc></url>
+  <url><loc>{{ "/blog/" | absolute_url }}</loc></url>
+  {%- for post in site.posts %}
+  <url>
+    <loc>{{ post.url | absolute_url }}</loc>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {%- endfor %}
+  {%- for item in site.travel %}
+  <url><loc>{{ item.url | absolute_url }}</loc></url>
+  {%- endfor %}
+  {%- for item in site.ticks_and_trips %}
+  <url><loc>{{ item.url | absolute_url }}</loc></url>
+  {%- endfor %}
+</urlset>

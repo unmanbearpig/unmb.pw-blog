@@ -3,7 +3,7 @@ layout: page
 title: Gnuplot cheatsheet
 date: 2022-12-06
 excerpt: ""
-permalink: /ticks_and_trips/gnuplot.html
+permalink: /blog/ticks_and_trips/gnuplot.html
 ---
 
 # Gnuplot

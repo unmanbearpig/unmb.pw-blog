@@ -3,7 +3,7 @@ layout: travel-post
 title: "Breaking my foot in a wind storm in the middle of nowhere"
 date:   2025-02-24 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-24-wind_drop.html
+permalink: /blog/travel/2025-02-24-wind_drop.html
 ---
 
 

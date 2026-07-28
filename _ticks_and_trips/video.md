@@ -5,7 +5,7 @@ date: 2025-02-16
 excerpt: |
   TLDR:<br>
   DaVinci Resolve for editing, ffmpeg for transcoding, Backblaze B2 for hosting
-permalink: /ticks_and_trips/video.html
+permalink: /blog/ticks_and_trips/video.html
 ---
 
 # Video Editing and Hosting Pipeline

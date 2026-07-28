@@ -1,5 +1,5 @@
 ---
 layout: travel
 title: Travel
-permalink: /travel/
+permalink: /blog/travel/
 ---

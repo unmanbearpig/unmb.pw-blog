@@ -3,7 +3,7 @@ layout: travel-post
 title:  "Valley Paraglider"
 date:   2025-02-14 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-14-valley-paraglider.html
+permalink: /blog/travel/2025-02-14-valley-paraglider.html
 ---
 <video-player
   vid-id="paraglider_vid"

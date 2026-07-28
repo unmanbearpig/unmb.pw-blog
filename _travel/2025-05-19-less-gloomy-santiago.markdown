@@ -3,7 +3,7 @@ layout: travel-post
 title: "Less Gloomy Santiago"
 date:   2025-05-19 21:59:16.939027
 categories: travel
-permalink: /travel/2025-05-19-less-gloomy-santiago.html
+permalink: /blog/travel/2025-05-19-less-gloomy-santiago.html
 published: false
 ---
 

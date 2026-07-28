@@ -3,7 +3,7 @@ layout: travel-post
 title: "Santiago"
 date:   2025-03-22 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-03-22-santiago.html
+permalink: /blog/travel/2025-03-22-santiago.html
 ---
 
 <div class="gallery">

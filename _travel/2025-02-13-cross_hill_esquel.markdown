@@ -3,7 +3,7 @@ layout: travel-post
 title: "Cross Hill Esquel"
 date:   2025-02-13 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-13-cross-hill-esquel.html
+permalink: /blog/travel/2025-02-13-cross-hill-esquel.html
 ---
 
 

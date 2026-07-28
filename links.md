@@ -1,7 +1,7 @@
 ---
 layout: links
 title: Links
-permalink: /links/
+permalink: /blog/links/
 ---
 
 Some useful things from the internet

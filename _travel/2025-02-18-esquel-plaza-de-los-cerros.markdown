@@ -3,7 +3,7 @@ layout: travel-post
 title:  "Esquel - Plaza de los Cerros"
 date:   2025-02-18 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-18-esquel-plaza-de-los-cerros.html
+permalink: /blog/travel/2025-02-18-esquel-plaza-de-los-cerros.html
 ---
 
 **WIP**

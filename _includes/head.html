@@ -1,30 +1,75 @@
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  {%- seo -%}
+  {%- assign meta_title = page.title | default: site.title -%}
+  {%- if page.title and page.title != site.title -%}
+    {%- assign meta_title = page.title | append: " | " | append: site.title -%}
+  {%- endif -%}
+  {%- assign meta_description = page.description | default: page.excerpt | default: site.description | strip_html | strip_newlines | normalize_whitespace -%}
+  {%- assign canonical_url = page.canonical_url | default: page.url | absolute_url -%}
+  {%- assign social_image = page.image | default: "/assets/images/portfolio/hostelpunk-home.webp" | absolute_url -%}
+
+  <title>{{ meta_title | escape }}</title>
+  <meta name="description" content="{{ meta_description | escape }}">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if site.review_mode -%}
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  {%- else -%}
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  {%- endif -%}
+
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:title" content="{{ meta_title | escape }}">
+  <meta property="og:description" content="{{ meta_description | escape }}">
+  <meta property="og:url" content="{{ canonical_url }}">
+  <meta property="og:image" content="{{ social_image }}">
+  <meta property="og:site_name" content="{{ site.title | escape }}">
+  <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="{{ "/favicon.ico" | relative_url }}" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ "/favicon-32x32.png" | relative_url }}">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ "/favicon-16x16.png" | relative_url }}">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ "/apple-touch-icon.png" | relative_url }}">
   <link rel="manifest" href="{{ "/site.webmanifest" | relative_url }}">
-  <meta name="theme-color" content="#ffffff">
+  <meta name="theme-color" content="#f3f1ec">
   <meta name="apple-mobile-web-app-title" content="{{ site.title | escape }}">
   <meta name="application-name" content="{{ site.title | escape }}">
   <meta name="msapplication-config" content="{{ "/browserconfig.xml" | relative_url }}">
 
+  <link rel="preload" href="{{ "/assets/fonts/space-grotesk-latin-wght-normal.woff2" | relative_url }}" as="font" type="font/woff2" crossorigin>
+  {%- if page.preload_image -%}
+  <link rel="preload" href="{{ page.preload_image | relative_url }}" as="image" type="image/webp">
+  {%- endif -%}
   <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
   <link rel="stylesheet" href="{{ "/assets/css/video-player-theme.css" | relative_url }}">
   <script src="{{ "/assets/js/video-player.js" | relative_url }}" defer></script>
+
   {% if page.layout == 'travel' or page.layout == 'travel-post' or page.layout == 'travel_default' or layout.name == 'travel' or layout.name == 'travel_default' %}
-  <link rel="stylesheet" href="{{ "/assets/css/travel.css" | relative_url }}?v={{ site.time | date: '%s' }}">
-  <script src="{{ "/assets/js/travel.js" | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+  <link rel="stylesheet" href="{{ "/assets/css/travel.css" | relative_url }}">
+  <script src="{{ "/assets/js/travel.js" | relative_url }}" defer></script>
   {% endif %}
 
-  {%- feed_meta %}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-  {%- endif -%}
+  {%- feed_meta -%}
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ivan Fedyunin",
+    "url": "https://unmb.pw/",
+    "image": "https://unmb.pw/assets/brand/logo.png",
+    "jobTitle": "Senior backend and product engineer",
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Santiago, Chile"
+    },
+    "sameAs": [
+      "https://github.com/unmanbearpig",
+      "https://www.linkedin.com/in/ifedyunin/",
+      "https://hostelpunk.com/"
+    ]
+  }
+  </script>
 </head>

@@ -2,7 +2,7 @@
 layout: page
 date: 2022-12-15
 excerpt: |
-permalink: /ru_music.html
+permalink: /blog/ru_music.html
 ---
 
 # Russian music

@@ -3,7 +3,7 @@ layout: travel-post
 title: "Perito Moreno the glacier"
 date:   2025-03-08 17:02:13 +0400
 categories: travel
-permalink: /travel/2025-02-24-perito-moreno-the-glacier.html
+permalink: /blog/travel/2025-02-24-perito-moreno-the-glacier.html
 ---
 
 
