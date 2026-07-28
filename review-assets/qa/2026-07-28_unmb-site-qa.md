@@ -83,7 +83,7 @@ These numbers verify that the static build has no obvious rendering regression. 
 ## CV check
 
 - Stable route: `/assets/cv/Ivan_Fedyunin_CV.pdf`
-- One A4 page, 53,993 bytes.
+- One A4 page, 54,534 bytes.
 - Tagged PDF with a searchable text layer.
 - No embedded JavaScript.
 - Headline and current Vestuario Antiguo product, identity, logo and Rails ownership are represented in the source and PDF.
