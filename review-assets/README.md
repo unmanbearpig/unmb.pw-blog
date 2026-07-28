@@ -10,6 +10,18 @@ The redesign changes how Ivan's experience, flagship work and use of coding agen
 
 ## Build and serve locally
 
+The easiest option is the combined launcher in the service review worktree:
+
+```sh
+/home/unmbp/projects/worktrees/service-site-review/bin/preview-websites
+```
+
+It builds both sites, starts loopback-only servers, and opens one hub linking all
+three employer concepts, every About draft, Work, Writing, the CV, all service
+pages and the naming boards. Press Ctrl-C in its terminal to stop both servers.
+
+To run only `unmb.pw`, use the commands below.
+
 From the review worktree:
 
 ```sh
